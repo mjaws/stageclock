@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StageClock</title>
+    <script type="module" src="/src/main.ts" defer></script>
+  </head>
+
+  <body>
+    <main id="app">
+      <div id="controls">
+        <div class="mode-switch" role="group" aria-label="Clock mode">
+          <button type="button" class="mode-btn" data-mode="clock">Clock</button>
+          <button type="button" class="mode-btn" data-mode="countdown">Countdown</button>
+          <button type="button" class="mode-btn" data-mode="stopwatch">Stopwatch</button>
+        </div>
+
+        <div class="timer-controls">
+          <input
+            id="duration-input"
+            type="text"
+            inputmode="numeric"
+            placeholder="MM:SS"
+            aria-label="Countdown duration"
+          />
+          <button type="button" id="start-btn">Start</button>
+          <button type="button" id="pause-btn">Pause</button>
+          <button type="button" id="reset-btn">Reset</button>
+        </div>
+
+        <button type="button" id="chrome-toggle-btn" title="Hide toolbar (F9)">
+          Hide toolbar
+        </button>
+      </div>
+
+      <div id="stage">
+        <div id="display" class="band-neutral">00:00:00</div>
+      </div>
+
+      <div id="hint">Press F9 to show the toolbar again</div>
+    </main>
+  </body>
+</html>

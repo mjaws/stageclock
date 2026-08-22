@@ -1,0 +1,2212 @@
+
+> tauri-app@0.1.0 tauri
+> tauri dev
+
+     Running BeforeDevCommand (`npm run dev`)
+
+> tauri-app@0.1.0 dev
+> vite
+
+
+  VITE v6.4.3  ready in 553 ms
+
+  ➜  Local:   http://localhost:1420/
+     Running DevCommand (`cargo  run --no-default-features --color always --`)
+        Info Watching C:\Users\matthew\gitrepos\stageclock\src-tauri for changes...
+    Updating crates.io index
+       Fetch 2 complete; 4 pending                        
+       Fetch 4 complete; 2 pending                        
+       Fetch 5 complete; 1 pending                        
+       Fetch 8 complete; 52 pending                       
+       Fetch 11 complete; 49 pending                      
+       Fetch 15 complete; 45 pending                      
+       Fetch 18 complete; 42 pending                      
+       Fetch 23 complete; 37 pending                      
+       Fetch 24 complete; 36 pending                      
+       Fetch 26 complete; 34 pending                      
+       Fetch 29 complete; 31 pending                      
+       Fetch 30 complete; 30 pending                      
+       Fetch 34 complete; 26 pending                      
+       Fetch 36 complete; 24 pending                      
+       Fetch 37 complete; 23 pending                      
+       Fetch 38 complete; 22 pending                      
+       Fetch 39 complete; 21 pending                      
+       Fetch 40 complete; 20 pending                      
+       Fetch 42 complete; 18 pending                      
+       Fetch 43 complete; 17 pending                      
+       Fetch 44 complete; 16 pending                      
+       Fetch 46 complete; 14 pending                      
+       Fetch 47 complete; 13 pending                      
+       Fetch 48 complete; 12 pending                      
+       Fetch 49 complete; 11 pending                      
+       Fetch 52 complete; 8 pending                       
+       Fetch 53 complete; 7 pending                       
+       Fetch 54 complete; 6 pending                       
+       Fetch 56 complete; 4 pending                       
+       Fetch 58 complete; 2 pending                       
+       Fetch 59 complete; 1 pending                       
+       Fetch 60 complete; 123 pending                     
+       Fetch 61 complete; 122 pending                     
+       Fetch 65 complete; 118 pending                     
+       Fetch 87 complete; 96 pending                      
+       Fetch 90 complete; 93 pending                      
+       Fetch 91 complete; 92 pending                      
+       Fetch 94 complete; 89 pending                      
+       Fetch 97 complete; 86 pending                      
+       Fetch 100 complete; 83 pending                     
+       Fetch 105 complete; 78 pending                     
+       Fetch 112 complete; 71 pending                     
+       Fetch 114 complete; 69 pending                     
+       Fetch 117 complete; 66 pending                     
+       Fetch 120 complete; 63 pending                     
+       Fetch 122 complete; 61 pending                     
+       Fetch 123 complete; 60 pending                     
+       Fetch 126 complete; 57 pending                     
+       Fetch 129 complete; 54 pending                     
+       Fetch 132 complete; 51 pending                     
+       Fetch 134 complete; 49 pending                     
+       Fetch 136 complete; 47 pending                     
+       Fetch 140 complete; 43 pending                     
+       Fetch 141 complete; 42 pending                     
+       Fetch 145 complete; 38 pending                     
+       Fetch 148 complete; 35 pending                     
+       Fetch 150 complete; 33 pending                     
+       Fetch 152 complete; 31 pending                     
+       Fetch 155 complete; 28 pending                     
+       Fetch 157 complete; 26 pending                     
+       Fetch 161 complete; 22 pending                     
+       Fetch 162 complete; 21 pending                     
+       Fetch 164 complete; 19 pending                     
+       Fetch 165 complete; 18 pending                     
+       Fetch 166 complete; 17 pending                     
+       Fetch 167 complete; 16 pending                     
+       Fetch 170 complete; 13 pending                     
+       Fetch 173 complete; 10 pending                     
+       Fetch 177 complete; 6 pending                      
+       Fetch 178 complete; 5 pending                      
+       Fetch 179 complete; 4 pending                      
+       Fetch 180 complete; 3 pending                      
+       Fetch 181 complete; 2 pending                      
+       Fetch 182 complete; 1 pending                      
+       Fetch 183 complete; 136 pending                    
+       Fetch 201 complete; 118 pending                    
+       Fetch 205 complete; 114 pending                    
+       Fetch 227 complete; 92 pending                     
+       Fetch 234 complete; 85 pending                     
+       Fetch 241 complete; 78 pending                     
+       Fetch 244 complete; 75 pending                     
+       Fetch 245 complete; 74 pending                     
+       Fetch 249 complete; 70 pending                     
+       Fetch 254 complete; 65 pending                     
+       Fetch 260 complete; 59 pending                     
+       Fetch 263 complete; 56 pending                     
+       Fetch 264 complete; 55 pending                     
+       Fetch 272 complete; 47 pending                     
+       Fetch 281 complete; 38 pending                     
+       Fetch 285 complete; 34 pending                     
+       Fetch 296 complete; 23 pending                     
+       Fetch 304 complete; 15 pending                     
+       Fetch 307 complete; 12 pending                     
+       Fetch 310 complete; 9 pending                      
+       Fetch 311 complete; 8 pending                      
+       Fetch 315 complete; 4 pending                      
+       Fetch 319 complete; 66 pending                     
+       Fetch 323 complete; 62 pending                     
+       Fetch 330 complete; 55 pending                     
+       Fetch 335 complete; 50 pending                     
+       Fetch 338 complete; 47 pending                     
+       Fetch 349 complete; 36 pending                     
+       Fetch 364 complete; 21 pending                     
+       Fetch 374 complete; 11 pending                     
+       Fetch 379 complete; 6 pending                      
+       Fetch 384 complete; 1 pending                      
+       Fetch 387 complete; 26 pending                     
+       Fetch 391 complete; 22 pending                     
+       Fetch 396 complete; 17 pending                     
+       Fetch 401 complete; 12 pending                     
+       Fetch 407 complete; 6 pending                      
+       Fetch 415 complete; 12 pending                     
+       Fetch 421 complete; 6 pending                      
+       Fetch 424 complete; 3 pending                      
+                                                            
+     Locking 470 packages to latest compatible versions
+      Adding generic-array v0.14.7 (available: v0.14.9)
+      Adding toml v0.8.2 (available: v0.8.23)
+      Adding toml_datetime v0.6.3 (available: v0.6.11)
+      Adding toml_edit v0.20.2 (available: v0.20.7)
+ Downloading 0 crates                                     
+ Downloading 1 crate                                      
+ Downloading 2 crates                                     
+ Downloading 3 crates                                     
+ Downloading 4 crates                                     
+ Downloading 5 crates                                     
+ Downloading 6 crates                                     
+ Downloading 7 crates                                     
+ Downloading 8 crates                                     
+ Downloading 9 crates                                     
+ Downloading 10 crates                                    
+ Downloading 11 crates                                    
+ Downloading 12 crates                                    
+ Downloading 13 crates                                    
+ Downloading 14 crates                                    
+ Downloading 15 crates                                    
+ Downloading 16 crates                                    
+ Downloading 17 crates                                    
+ Downloading 18 crates                                    
+ Downloading 19 crates                                    
+ Downloading 20 crates                                    
+ Downloading 21 crates                                    
+ Downloading 22 crates                                    
+ Downloading 23 crates                                    
+ Downloading 24 crates                                    
+ Downloading 25 crates                                    
+ Downloading 26 crates                                    
+ Downloading 27 crates                                    
+ Downloading 28 crates                                    
+ Downloading 29 crates                                    
+ Downloading 30 crates                                    
+ Downloading 31 crates                                    
+ Downloading 32 crates                                    
+ Downloading 33 crates                                    
+ Downloading 34 crates                                    
+ Downloading 35 crates                                    
+ Downloading 36 crates                                    
+ Downloading 37 crates                                    
+ Downloading 38 crates                                    
+ Downloading 39 crates                                    
+ Downloading 40 crates                                    
+ Downloading 41 crates                                    
+ Downloading 42 crates                                    
+ Downloading 43 crates                                    
+ Downloading 44 crates                                    
+ Downloading 45 crates                                    
+ Downloading 46 crates                                    
+ Downloading 47 crates                                    
+ Downloading 48 crates                                    
+ Downloading 49 crates                                    
+ Downloading 50 crates                                    
+ Downloading 51 crates                                    
+ Downloading 52 crates                                    
+ Downloading 53 crates                                    
+ Downloading 54 crates                                    
+ Downloading 55 crates                                    
+ Downloading 56 crates                                    
+ Downloading 57 crates                                    
+ Downloading 58 crates                                    
+ Downloading 59 crates                                    
+ Downloading 60 crates                                    
+ Downloading 61 crates                                    
+ Downloading 62 crates                                    
+ Downloading 63 crates                                    
+ Downloading 64 crates                                    
+ Downloading 65 crates                                    
+ Downloading 66 crates                                    
+ Downloading 67 crates                                    
+ Downloading 68 crates                                    
+ Downloading 69 crates                                    
+ Downloading 70 crates                                    
+ Downloading 71 crates                                    
+ Downloading 72 crates                                    
+ Downloading 73 crates                                    
+ Downloading 74 crates                                    
+ Downloading 75 crates                                    
+ Downloading 76 crates                                    
+ Downloading 77 crates                                    
+ Downloading 78 crates                                    
+ Downloading 79 crates                                    
+ Downloading 80 crates                                    
+ Downloading 81 crates                                    
+ Downloading 82 crates                                    
+ Downloading 83 crates                                    
+ Downloading 84 crates                                    
+ Downloading 85 crates                                    
+ Downloading 86 crates                                    
+ Downloading 87 crates                                    
+ Downloading 88 crates                                    
+ Downloading 89 crates                                    
+ Downloading 90 crates                                    
+ Downloading 91 crates                                    
+ Downloading 92 crates                                    
+ Downloading 93 crates                                    
+ Downloading 94 crates                                    
+ Downloading 95 crates                                    
+ Downloading 96 crates                                    
+ Downloading 97 crates                                    
+ Downloading 98 crates                                    
+ Downloading 99 crates                                    
+ Downloading 100 crates                                   
+ Downloading 101 crates                                   
+ Downloading 102 crates                                   
+ Downloading 103 crates                                   
+ Downloading 104 crates                                   
+ Downloading 105 crates                                   
+ Downloading 106 crates                                   
+ Downloading 107 crates                                   
+ Downloading 108 crates                                   
+ Downloading 109 crates                                   
+ Downloading 110 crates                                   
+ Downloading 111 crates                                   
+ Downloading 112 crates                                   
+ Downloading 113 crates                                   
+ Downloading 114 crates                                   
+ Downloading 115 crates                                   
+ Downloading 116 crates                                   
+ Downloading 117 crates                                   
+ Downloading 118 crates                                   
+ Downloading 119 crates                                   
+ Downloading 120 crates                                   
+ Downloading 121 crates                                   
+ Downloading 122 crates                                   
+ Downloading 123 crates                                   
+ Downloading 124 crates                                   
+ Downloading 125 crates                                   
+ Downloading 126 crates                                   
+ Downloading 127 crates                                   
+ Downloading 128 crates                                   
+ Downloading 129 crates                                   
+ Downloading 130 crates                                   
+ Downloading 131 crates                                   
+ Downloading 132 crates                                   
+ Downloading 133 crates                                   
+ Downloading 134 crates                                   
+ Downloading 135 crates                                   
+ Downloading 136 crates                                   
+ Downloading 137 crates                                   
+ Downloading 138 crates                                   
+ Downloading 139 crates                                   
+ Downloading 140 crates                                   
+ Downloading 141 crates                                   
+ Downloading 142 crates                                   
+ Downloading 143 crates                                   
+ Downloading 144 crates                                   
+ Downloading 145 crates                                   
+ Downloading 146 crates                                   
+ Downloading 147 crates                                   
+ Downloading 148 crates                                   
+ Downloading 149 crates                                   
+ Downloading 150 crates                                   
+ Downloading 151 crates                                   
+ Downloading 152 crates                                   
+ Downloading 153 crates                                   
+ Downloading 154 crates                                   
+ Downloading 155 crates                                   
+ Downloading 156 crates                                   
+ Downloading 157 crates                                   
+ Downloading 158 crates                                   
+ Downloading 159 crates                                   
+ Downloading 160 crates                                   
+ Downloading 161 crates                                   
+ Downloading 162 crates                                   
+ Downloading 163 crates                                   
+ Downloading 164 crates                                   
+ Downloading 165 crates                                   
+ Downloading 166 crates                                   
+ Downloading 167 crates                                   
+ Downloading 168 crates                                   
+ Downloading 169 crates                                   
+ Downloading 170 crates                                   
+ Downloading 171 crates                                   
+ Downloading 172 crates                                   
+ Downloading 173 crates                                   
+ Downloading 174 crates                                   
+ Downloading 175 crates                                   
+ Downloading 176 crates                                   
+ Downloading 177 crates                                   
+ Downloading 178 crates                                   
+ Downloading 179 crates                                   
+ Downloading 180 crates                                   
+ Downloading 181 crates                                   
+ Downloading 182 crates                                   
+ Downloading 183 crates                                   
+ Downloading 184 crates                                   
+ Downloading 185 crates                                   
+ Downloading 186 crates                                   
+ Downloading 187 crates                                   
+ Downloading 188 crates                                   
+ Downloading 189 crates                                   
+ Downloading 190 crates                                   
+ Downloading 191 crates                                   
+ Downloading 192 crates                                   
+ Downloading 193 crates                                   
+ Downloading 194 crates                                   
+ Downloading 195 crates                                   
+ Downloading 196 crates                                   
+ Downloading 197 crates                                   
+ Downloading 198 crates                                   
+ Downloading 199 crates                                   
+ Downloading 200 crates                                   
+ Downloading 201 crates                                   
+ Downloading 202 crates                                   
+ Downloading 203 crates                                   
+ Downloading 204 crates                                   
+ Downloading 205 crates                                   
+ Downloading 206 crates                                   
+ Downloading 207 crates                                   
+ Downloading 208 crates                                   
+ Downloading 209 crates                                   
+ Downloading 210 crates                                   
+ Downloading 211 crates                                   
+ Downloading 212 crates                                   
+ Downloading 213 crates                                   
+ Downloading 214 crates                                   
+ Downloading 215 crates                                   
+ Downloading 216 crates                                   
+ Downloading 217 crates                                   
+ Downloading 218 crates                                   
+ Downloading 219 crates                                   
+ Downloading 220 crates                                   
+ Downloading 221 crates                                   
+ Downloading 222 crates                                   
+ Downloading 223 crates                                   
+ Downloading 224 crates                                   
+ Downloading 225 crates                                   
+ Downloading 226 crates                                   
+ Downloading 227 crates                                   
+ Downloading 228 crates                                   
+ Downloading 229 crates                                   
+ Downloading 230 crates                                   
+ Downloading 231 crates                                   
+ Downloading 232 crates                                   
+ Downloading 233 crates                                   
+ Downloading 234 crates                                   
+ Downloading 235 crates                                   
+ Downloading 236 crates                                   
+ Downloading 237 crates                                   
+ Downloading 238 crates                                   
+ Downloading 239 crates                                   
+ Downloading 240 crates                                   
+ Downloading 241 crates                                   
+ Downloading 242 crates                                   
+ Downloading 243 crates                                   
+ Downloading 244 crates                                   
+ Downloading 245 crates                                   
+ Downloading 246 crates                                   
+ Downloading 247 crates                                   
+ Downloading 248 crates                                   
+ Downloading 249 crates                                   
+ Downloading 250 crates                                   
+ Downloading 251 crates                                   
+ Downloading 252 crates                                   
+ Downloading 253 crates                                   
+ Downloading 254 crates                                   
+ Downloading 255 crates                                   
+ Downloading 256 crates                                   
+ Downloading 257 crates                                   
+ Downloading 258 crates                                   
+ Downloading 259 crates                                   
+                                                            
+  Downloaded adler2 v2.0.1
+ Downloading 259 crates, remaining bytes: 251.0KiB        
+                                                            
+  Downloaded ident_case v1.0.1
+ Downloading 258 crates, remaining bytes: 1.8MiB          
+                                                            
+  Downloaded new_debug_unreachable v1.0.6
+ Downloading 257 crates, remaining bytes: 1.8MiB          
+                                                            
+  Downloaded mime v0.3.17
+ Downloading 256 crates, remaining bytes: 1.7MiB          
+                                                            
+  Downloaded num-conv v0.2.2
+ Downloading 255 crates, remaining bytes: 7.3MiB          
+                                                            
+  Downloaded markup5ever v0.38.0
+ Downloading 254 crates, remaining bytes: 9.0MiB          
+                                                            
+  Downloaded idna_adapter v1.2.2
+ Downloading 253 crates, remaining bytes: 9.0MiB          
+                                                            
+  Downloaded tauri-plugin-opener v2.5.4
+ Downloading 252 crates, remaining bytes: 8.8MiB          
+                                                            
+  Downloaded displaydoc v0.2.7
+ Downloading 251 crates, remaining bytes: 17.4MiB         
+                                                            
+  Downloaded itoa v1.0.18
+ Downloading 250 crates, remaining bytes: 17.0MiB         
+                                                            
+  Downloaded jiff-tzdb-platform v0.1.3
+ Downloading 249 crates, remaining bytes: 16.1MiB         
+                                                            
+  Downloaded option-ext v0.2.0
+ Downloading 248 crates, remaining bytes: 21.6MiB         
+                                                            
+  Downloaded percent-encoding v2.3.2
+ Downloading 247 crates, remaining bytes: 21.2MiB         
+                                                            
+  Downloaded phf_codegen v0.13.1
+ Downloading 246 crates, remaining bytes: 20.9MiB         
+                                                            
+  Downloaded phf_generator v0.13.1
+ Downloading 245 crates, remaining bytes: 20.4MiB         
+                                                            
+  Downloaded phf_shared v0.13.1
+ Downloading 244 crates, remaining bytes: 20.2MiB         
+                                                            
+  Downloaded ref-cast v1.0.27
+ Downloading 243 crates, remaining bytes: 19.7MiB         
+                                                            
+  Downloaded rustc-hash v2.1.3
+ Downloading 242 crates, remaining bytes: 21.7MiB         
+                                                            
+  Downloaded serde_spanned v1.1.1
+ Downloading 241 crates, remaining bytes: 21.7MiB         
+                                                            
+  Downloaded potential_utf v0.1.6
+ Downloading 240 crates, remaining bytes: 21.7MiB         
+                                                            
+  Downloaded powerfmt v0.2.0
+ Downloading 239 crates, remaining bytes: 21.7MiB         
+                                                            
+  Downloaded precomputed-hash v0.1.1
+ Downloading 238 crates, remaining bytes: 21.3MiB         
+                                                            
+  Downloaded ref-cast-impl v1.0.27
+ Downloading 237 crates, remaining bytes: 21.0MiB         
+                                                            
+  Downloaded scopeguard v1.2.0
+ Downloading 236 crates, remaining bytes: 20.9MiB         
+                                                            
+  Downloaded serialize-to-javascript v0.1.2
+ Downloading 235 crates, remaining bytes: 19.5MiB         
+                                                            
+  Downloaded serialize-to-javascript-impl v0.1.2
+ Downloading 234 crates, remaining bytes: 19.2MiB         
+                                                            
+  Downloaded serde_repr v0.1.21
+ Downloading 233 crates, remaining bytes: 19.1MiB         
+                                                            
+  Downloaded same-file v1.0.6
+ Downloading 232 crates, remaining bytes: 18.5MiB         
+                                                            
+  Downloaded cssparser-macros v0.6.1
+ Downloading 231 crates, remaining bytes: 18.1MiB         
+                                                            
+  Downloaded dpi v0.1.2
+ Downloading 230 crates, remaining bytes: 17.6MiB         
+                                                            
+  Downloaded dtor v0.3.0
+ Downloading 229 crates, remaining bytes: 26.6MiB         
+                                                            
+  Downloaded dyn-clone v1.0.20
+ Downloading 228 crates, remaining bytes: 26.6MiB         
+                                                            
+  Downloaded strsim v0.11.1
+ Downloading 227 crates, remaining bytes: 26.6MiB         
+                                                            
+  Downloaded stable_deref_trait v1.2.1
+ Downloading 226 crates, remaining bytes: 25.9MiB         
+                                                            
+  Downloaded rustc_version v0.4.1
+ Downloading 225 crates, remaining bytes: 25.8MiB         
+                                                            
+  Downloaded string_cache_codegen v0.6.1
+ Downloading 224 crates, remaining bytes: 23.9MiB         
+                                                            
+  Downloaded json-patch v3.0.1
+ Downloading 223 crates, remaining bytes: 23.4MiB         
+                                                            
+  Downloaded jsonptr v0.6.3
+ Downloading 222 crates, remaining bytes: 22.4MiB         
+                                                            
+  Downloaded litemap v0.8.3
+ Downloading 221 crates, remaining bytes: 21.2MiB         
+                                                            
+  Downloaded winapi-util v0.1.11
+ Downloading 220 crates, remaining bytes: 20.4MiB         
+                                                            
+  Downloaded windows-strings v0.4.2
+ Downloading 219 crates, remaining bytes: 19.6MiB         
+                                                            
+  Downloaded dtoa-short v0.3.5
+ Downloading 218 crates, remaining bytes: 19.4MiB         
+                                                            
+  Downloaded pin-project-lite v0.2.17
+ Downloading 217 crates, remaining bytes: 19.4MiB         
+                                                            
+  Downloaded phf v0.13.1
+ Downloading 216 crates, remaining bytes: 19.2MiB         
+                                                            
+  Downloaded quote v1.0.47
+ Downloading 215 crates, remaining bytes: 19.1MiB         
+                                                            
+  Downloaded siphasher v1.0.3
+ Downloading 214 crates, remaining bytes: 19.1MiB         
+                                                            
+  Downloaded crypto-common v0.1.7
+ Downloading 213 crates, remaining bytes: 19.0MiB         
+                                                            
+  Downloaded dtor-proc-macro v0.0.6
+ Downloading 212 crates, remaining bytes: 19.0MiB         
+                                                            
+  Downloaded sha2 v0.10.9
+ Downloading 211 crates, remaining bytes: 18.9MiB         
+                                                            
+  Downloaded shlex v2.0.1
+ Downloading 210 crates, remaining bytes: 18.8MiB         
+                                                            
+  Downloaded simd-adler32 v0.3.10
+ Downloading 209 crates, remaining bytes: 18.8MiB         
+                                                            
+  Downloaded string_cache v0.9.0
+ Downloading 208 crates, remaining bytes: 18.7MiB         
+                                                            
+  Downloaded ctor-proc-macro v0.0.7
+ Downloading 207 crates, remaining bytes: 18.7MiB         
+                                                            
+  Downloaded fnv v1.0.7
+ Downloading 206 crates, remaining bytes: 18.6MiB         
+                                                            
+  Downloaded serde-untagged v0.1.9
+ Downloading 205 crates, remaining bytes: 18.6MiB         
+                                                            
+  Downloaded synstructure v0.13.2
+ Downloading 204 crates, remaining bytes: 18.5MiB         
+                                                            
+  Downloaded servo_arc v0.4.3
+ Downloading 203 crates, remaining bytes: 18.5MiB         
+                                                            
+  Downloaded raw-window-handle v0.6.2
+ Downloading 202 crates, remaining bytes: 18.4MiB         
+                                                            
+  Downloaded serde_derive_internals v0.29.1
+ Downloading 201 crates, remaining bytes: 18.4MiB         
+                                                            
+  Downloaded lock_api v0.4.14
+ Downloading 200 crates, remaining bytes: 18.3MiB         
+                                                            
+  Downloaded typeid v1.0.3
+ Downloading 199 crates, remaining bytes: 18.3MiB         
+                                                            
+  Downloaded equivalent v1.0.2
+ Downloading 198 crates, remaining bytes: 18.2MiB         
+                                                            
+  Downloaded infer v0.19.0
+ Downloading 197 crates, remaining bytes: 18.2MiB         
+                                                            
+  Downloaded open v5.4.1
+ Downloading 196 crates, remaining bytes: 18.1MiB         
+                                                            
+  Downloaded windows-future v0.2.1
+ Downloading 195 crates, remaining bytes: 18.0MiB         
+                                                            
+  Downloaded windows-targets v0.52.6
+ Downloading 194 crates, remaining bytes: 18.0MiB         
+                                                            
+  Downloaded once_cell v1.21.4
+ Downloading 193 crates, remaining bytes: 17.9MiB         
+                                                            
+  Downloaded parking_lot_core v0.9.12
+ Downloading 192 crates, remaining bytes: 17.8MiB         
+                                                            
+  Downloaded phf_macros v0.13.1
+ Downloading 191 crates, remaining bytes: 17.7MiB         
+                                                            
+  Downloaded semver v1.0.28
+ Downloading 190 crates, remaining bytes: 17.6MiB         
+                                                            
+  Downloaded smallvec v1.15.2
+ Downloading 189 crates, remaining bytes: 17.5MiB         
+                                                            
+  Downloaded tauri-macros v2.6.3
+ Downloading 188 crates, remaining bytes: 17.5MiB         
+                                                            
+  Downloaded schemars_derive v0.8.22
+ Downloading 187 crates, remaining bytes: 17.4MiB         
+                                                            
+  Downloaded tauri-build v2.6.3
+ Downloading 186 crates, remaining bytes: 17.3MiB         
+                                                            
+  Downloaded tauri-plugin v2.6.3
+ Downloading 185 crates, remaining bytes: 17.3MiB         
+                                                            
+  Downloaded indexmap v1.9.3
+ Downloading 184 crates, remaining bytes: 17.2MiB         
+                                                            
+  Downloaded log v0.4.33
+ Downloading 183 crates, remaining bytes: 17.1MiB         
+                                                            
+  Downloaded keyboard-types v0.7.0
+ Downloading 182 crates, remaining bytes: 17.0MiB         
+                                                            
+  Downloaded jiff-tzdb v0.1.8
+ Downloading 181 crates, remaining bytes: 16.9MiB         
+                                                            
+  Downloaded windows-core v0.61.2
+ Downloading 180 crates, remaining bytes: 16.8MiB         
+                                                            
+  Downloaded windows-threading v0.1.0
+ Downloading 179 crates, remaining bytes: 16.7MiB         
+                                                            
+  Downloaded yoke v0.8.3
+ Downloading 178 crates, remaining bytes: 16.6MiB         
+                                                            
+  Downloaded autocfg v1.5.1
+ Downloading 177 crates, remaining bytes: 16.5MiB         
+                                                            
+  Downloaded block-buffer v0.10.4
+ Downloading 176 crates, remaining bytes: 16.4MiB         
+                                                            
+  Downloaded icu_provider v2.3.1
+ Downloading 175 crates, remaining bytes: 16.3MiB         
+                                                            
+  Downloaded parking_lot v0.12.5
+ Downloading 174 crates, remaining bytes: 16.2MiB         
+                                                            
+  Downloaded plist v1.10.0
+ Downloading 173 crates, remaining bytes: 16.1MiB         
+                                                            
+  Downloaded proc-macro2 v1.0.107
+ Downloading 172 crates, remaining bytes: 15.9MiB         
+                                                            
+  Downloaded serde_derive v1.0.229
+ Downloading 171 crates, remaining bytes: 15.7MiB         
+                                                            
+  Downloaded serde_with_macros v3.22.0
+ Downloading 170 crates, remaining bytes: 15.5MiB         
+                                                            
+  Downloaded socket2 v0.6.5
+ Downloading 169 crates, remaining bytes: 15.5MiB         
+                                                            
+  Downloaded serde_core v1.0.229
+ Downloading 168 crates, remaining bytes: 15.4MiB         
+                                                            
+  Downloaded tauri-codegen v2.6.3
+ Downloading 167 crates, remaining bytes: 15.2MiB         
+                                                            
+  Downloaded windows-version v0.1.7
+ Downloading 166 crates, remaining bytes: 15.1MiB         
+                                                            
+  Downloaded bit-set v0.8.0
+ Downloading 165 crates, remaining bytes: 15.0MiB         
+                                                            
+  Downloaded bitflags v1.3.2
+ Downloading 164 crates, remaining bytes: 14.9MiB         
+                                                            
+  Downloaded miniz_oxide v0.8.9
+ Downloading 163 crates, remaining bytes: 14.8MiB         
+                                                            
+  Downloaded num-traits v0.2.19
+ Downloading 162 crates, remaining bytes: 14.6MiB         
+                                                            
+  Downloaded schemars v0.8.22
+ Downloading 161 crates, remaining bytes: 14.5MiB         
+                                                            
+  Downloaded softbuffer v0.4.8
+ Downloading 160 crates, remaining bytes: 13.4MiB         
+                                                            
+  Downloaded selectors v0.36.1
+ Downloading 159 crates, remaining bytes: 13.2MiB         
+                                                            
+  Downloaded schemars v0.9.0
+ Downloading 158 crates, remaining bytes: 13.1MiB         
+                                                            
+  Downloaded winreg v0.55.0
+ Downloading 157 crates, remaining bytes: 11.9MiB         
+                                                            
+  Downloaded writeable v0.6.4
+ Downloading 156 crates, remaining bytes: 11.7MiB         
+                                                            
+  Downloaded bs58 v0.5.1
+ Downloading 155 crates, remaining bytes: 11.6MiB         
+                                                            
+  Downloaded muda v0.19.3
+ Downloading 154 crates, remaining bytes: 11.4MiB         
+                                                            
+  Downloaded schemars v1.2.2
+ Downloading 153 crates, remaining bytes: 11.1MiB         
+                                                            
+  Downloaded serde v1.0.229
+ Downloading 152 crates, remaining bytes: 9.9MiB          
+                                                            
+  Downloaded byteorder v1.5.0
+ Downloading 151 crates, remaining bytes: 9.7MiB          
+                                                            
+  Downloaded crossbeam-channel v0.5.16
+ Downloading 150 crates, remaining bytes: 9.5MiB          
+                                                            
+  Downloaded memchr v2.8.3
+ Downloading 149 crates, remaining bytes: 9.2MiB          
+                                                            
+  Downloaded camino v1.2.5
+ Downloading 148 crates, remaining bytes: 8.7MiB          
+                                                            
+  Downloaded cargo_metadata v0.19.2
+ Downloading 147 crates, remaining bytes: 8.6MiB          
+                                                            
+  Downloaded cfg-if v1.0.4
+ Downloading 146 crates, remaining bytes: 8.4MiB          
+                                                            
+  Downloaded icu_properties v2.3.0
+ Downloading 145 crates, remaining bytes: 8.3MiB          
+                                                            
+  Downloaded indexmap v2.14.0
+ Downloading 144 crates, remaining bytes: 8.1MiB          
+                                                            
+  Downloaded bitflags v2.13.1
+ Downloading 143 crates, remaining bytes: 7.8MiB          
+                                                            
+  Downloaded mio v1.2.2
+ Downloading 142 crates, remaining bytes: 7.3MiB          
+                                                            
+  Downloaded jiff-core v0.1.0
+ Downloading 141 crates, remaining bytes: 6.8MiB          
+                                                            
+  Downloaded cookie v0.18.2
+ Downloading 140 crates, remaining bytes: 6.5MiB          
+                                                            
+  Downloaded png v0.17.16
+ Downloading 139 crates, remaining bytes: 6.4MiB          
+                                                            
+  Downloaded idna v1.1.0
+ Downloading 138 crates, remaining bytes: 6.1MiB          
+                                                            
+  Downloaded unic-char-property v0.9.0
+ Downloading 137 crates, remaining bytes: 5.9MiB          
+                                                            
+  Downloaded vswhom-sys v0.1.3
+ Downloading 136 crates, remaining bytes: 5.7MiB          
+                                                            
+  Downloaded tinyvec_macros v0.1.1
+ Downloading 135 crates, remaining bytes: 5.6MiB          
+                                                            
+  Downloaded unic-common v0.9.0
+ Downloading 134 crates, remaining bytes: 5.5MiB          
+                                                            
+  Downloaded serde_json v1.0.151
+ Downloading 133 crates, remaining bytes: 5.4MiB          
+                                                            
+  Downloaded icu_properties_data v2.3.0
+ Downloading 132 crates, remaining bytes: 4.6MiB          
+                                                            
+  Downloaded regex v1.13.1
+ Downloading 131 crates, remaining bytes: 3.0MiB          
+                                                            
+  Downloaded zerofrom v0.1.8
+ Downloading 130 crates, remaining bytes: 2.5MiB          
+                                                            
+  Downloaded zerovec-derive v0.11.6
+ Downloading 129 crates, remaining bytes: 2.3MiB          
+                                                            
+  Downloaded zmij v1.0.23
+ Downloading 128 crates, remaining bytes: 2.2MiB          
+                                                            
+  Downloaded alloc-stdlib v0.2.4
+ Downloading 127 crates, remaining bytes: 2.0MiB          
+                                                            
+  Downloaded cargo-platform v0.1.9
+ Downloading 126 crates, remaining bytes: 1.8MiB          
+                                                            
+  Downloaded cpufeatures v0.2.17
+ Downloading 125 crates, remaining bytes: 1.6MiB          
+                                                            
+  Downloaded windows-interface v0.59.3
+ Downloading 124 crates, remaining bytes: 1.5MiB          
+                                                            
+  Downloaded aho-corasick v1.1.5
+ Downloading 123 crates, remaining bytes: 1.3MiB          
+                                                            
+  Downloaded anyhow v1.0.104
+ Downloading 122 crates, remaining bytes: 904.9KiB        
+                                                            
+  Downloaded cargo_toml v0.22.3
+ Downloading 121 crates, remaining bytes: 372.9KiB        
+                                                            
+  Downloaded serde_with v3.22.0
+ Downloading 120 crates, remaining bytes: 188.9KiB        
+                                                            
+  Downloaded base64 v0.22.1
+ Downloading 119 crates                                   
+                                                            
+  Downloaded quick-xml v0.41.0
+ Downloading 118 crates                                   
+                                                            
+  Downloaded winnow v0.7.15
+ Downloading 117 crates                                   
+                                                            
+  Downloaded zerotrie v0.2.5
+ Downloading 116 crates                                   
+                                                            
+  Downloaded brotli-decompressor v5.0.3
+ Downloading 115 crates                                   
+                                                            
+  Downloaded chrono v0.4.45
+ Downloading 114 crates                                   
+                                                            
+  Downloaded cfb v0.7.3
+ Downloading 113 crates                                   
+                                                            
+  Downloaded bit-vec v0.8.0
+ Downloading 112 crates                                   
+                                                            
+  Downloaded tauri v2.11.5
+ Downloading 111 crates                                   
+                                                            
+  Downloaded zerovec v0.11.8
+ Downloading 110 crates                                   
+                                                            
+  Downloaded cc v1.4.4
+ Downloading 109 crates                                   
+                                                            
+  Downloaded syn v2.0.119
+ Downloading 108 crates                                   
+                                                            
+  Downloaded syn v3.0.3
+ Downloading 107 crates                                   
+                                                            
+  Downloaded tao v0.35.3
+ Downloading 106 crates                                   
+                                                            
+  Downloaded crc32fast v1.5.0
+ Downloading 105 crates                                   
+                                                            
+  Downloaded bytes v1.12.1
+ Downloading 104 crates                                   
+                                                            
+  Downloaded time-core v0.1.9
+ Downloading 103 crates                                   
+                                                            
+  Downloaded unic-ucd-version v0.9.0
+ Downloading 102 crates                                   
+                                                            
+  Downloaded regex-syntax v0.8.11
+ Downloading 101 crates                                   
+                                                            
+  Downloaded wry v0.55.1
+ Downloading 100 crates                                   
+                                                            
+  Downloaded regex-automata v0.4.18
+ Downloading 99 crates, extracting regex-automata ...     
+                                                            
+  Downloaded jiff v0.2.35
+ Downloading 98 crates, extracting jiff ...               
+                                                            
+  Downloaded brotli v8.0.4
+ Downloading 97 crates, extracting brotli ...             
+                                                            
+  Downloaded libc v0.2.189
+ Downloading 96 crates, extracting libc ...               
+                                                            
+  Downloaded windows_x86_64_msvc v0.52.6
+ Downloading 95 crates, extracting windows_x86_64_msvc ...
+                                                            
+  Downloaded heck v0.5.0
+ Downloading 94 crates                                    
+                                                            
+  Downloaded vswhom v0.1.0
+ Downloading 93 crates                                    
+                                                            
+  Downloaded window-vibrancy v0.6.0
+ Downloading 92 crates, extracting window-vibrancy ...    
+                                                            
+  Downloaded utf8_iter v1.0.4
+ Downloading 91 crates                                    
+                                                            
+  Downloaded windows-sys v0.61.2
+ Downloading 90 crates, extracting windows-sys ...        
+                                                            
+  Downloaded windows-sys v0.59.0
+ Downloading 89 crates, extracting windows-sys ...        
+                                                            
+  Downloaded webview2-com-macros v0.8.1
+ Downloading 88 crates                                    
+                                                            
+  Downloaded dirs-sys v0.5.0
+ Downloading 87 crates                                    
+                                                            
+  Downloaded defmt-parser v1.0.0
+ Downloading 86 crates                                    
+                                                            
+  Downloaded darling_macro v0.23.0
+ Downloading 85 crates                                    
+                                                            
+  Downloaded dunce v1.0.5
+ Downloading 84 crates                                    
+                                                            
+  Downloaded dirs v6.0.0
+ Downloading 83 crates                                    
+                                                            
+  Downloaded ctor v0.8.0
+ Downloading 82 crates                                    
+                                                            
+  Downloaded form_urlencoded v1.2.2
+ Downloading 81 crates                                    
+                                                            
+  Downloaded hex v0.4.3
+ Downloading 80 crates                                    
+                                                            
+  Downloaded unic-char-range v0.9.0
+ Downloading 79 crates                                    
+                                                            
+  Downloaded generic-array v0.14.7
+ Downloading 78 crates                                    
+                                                            
+  Downloaded version_check v0.9.5
+ Downloading 77 crates                                    
+                                                            
+  Downloaded digest v0.10.7
+ Downloading 76 crates                                    
+                                                            
+  Downloaded embed-resource v3.0.11
+ Downloading 75 crates                                    
+                                                            
+  Downloaded fastrand v2.5.0
+ Downloading 74 crates                                    
+                                                            
+  Downloaded windows-numerics v0.2.0
+ Downloading 73 crates                                    
+                                                            
+  Downloaded yoke-derive v0.8.2
+ Downloading 72 crates                                    
+                                                            
+  Downloaded windows-collections v0.2.0
+ Downloading 71 crates                                    
+                                                            
+  Downloaded windows-result v0.3.4
+ Downloading 70 crates                                    
+                                                            
+  Downloaded windows-link v0.2.1
+ Downloading 69 crates                                    
+                                                            
+  Downloaded windows-implement v0.60.2
+ Downloading 68 crates                                    
+                                                            
+  Downloaded zerofrom-derive v0.1.7
+ Downloading 67 crates                                    
+                                                            
+  Downloaded alloc-no-stdlib v2.0.4
+ Downloading 66 crates                                    
+                                                            
+  Downloaded thiserror v2.0.20
+ Downloading 65 crates                                    
+                                                            
+  Downloaded web_atoms v0.2.6
+ Downloading 64 crates                                    
+                                                            
+  Downloaded walkdir v2.5.0
+ Downloading 63 crates                                    
+                                                            
+  Downloaded glob v0.3.4
+ Downloading 62 crates                                    
+                                                            
+  Downloaded thiserror-impl v2.0.20
+ Downloading 61 crates                                    
+                                                            
+  Downloaded thiserror v1.0.69
+ Downloading 60 crates                                    
+                                                            
+  Downloaded foldhash v0.2.0
+ Downloading 59 crates                                    
+                                                            
+  Downloaded defmt-macros v1.1.1
+ Downloading 58 crates                                    
+                                                            
+  Downloaded toml_datetime v1.1.1+spec-1.1.0
+ Downloading 57 crates                                    
+                                                            
+  Downloaded deranged v0.5.8
+ Downloading 56 crates                                    
+                                                            
+  Downloaded tauri-winres v0.3.6
+ Downloading 55 crates                                    
+                                                            
+  Downloaded dtoa v1.0.11
+ Downloading 54 crates                                    
+                                                            
+  Downloaded toml_datetime v0.7.5+spec-1.1.0
+ Downloading 53 crates                                    
+                                                            
+  Downloaded toml_writer v1.1.2+spec-1.1.0
+ Downloading 52 crates                                    
+                                                            
+  Downloaded unic-ucd-ident v0.9.0
+ Downloading 51 crates                                    
+                                                            
+  Downloaded urlpattern v0.3.0
+ Downloading 50 crates                                    
+                                                            
+  Downloaded crossbeam-utils v0.8.22
+ Downloading 49 crates                                    
+                                                            
+  Downloaded windows-link v0.1.3
+ Downloading 48 crates                                    
+                                                            
+  Downloaded find-msvc-tools v0.1.11
+ Downloading 47 crates                                    
+                                                            
+  Downloaded tendril v0.5.1
+ Downloading 46 crates                                    
+                                                            
+  Downloaded time-macros v0.2.32
+ Downloading 45 crates                                    
+                                                            
+  Downloaded thiserror-impl v1.0.69
+ Downloading 44 crates                                    
+                                                            
+  Downloaded webview2-com v0.38.2
+ Downloading 43 crates                                    
+                                                            
+  Downloaded toml_parser v1.1.3+spec-1.1.0
+ Downloading 42 crates                                    
+                                                            
+  Downloaded darling v0.23.0
+ Downloading 41 crates                                    
+                                                            
+  Downloaded erased-serde v0.4.10
+ Downloading 40 crates                                    
+                                                            
+  Downloaded tracing-attributes v0.1.31
+ Downloading 39 crates                                    
+                                                            
+  Downloaded fdeflate v0.3.7
+ Downloading 38 crates                                    
+                                                            
+  Downloaded tauri-runtime v2.11.3
+ Downloading 37 crates                                    
+                                                            
+  Downloaded defmt v1.1.1
+ Downloading 36 crates                                    
+                                                            
+  Downloaded getrandom v0.4.3
+ Downloading 35 crates                                    
+                                                            
+  Downloaded tray-icon v0.24.2
+ Downloading 34 crates                                    
+                                                            
+  Downloaded toml v1.1.4+spec-1.1.0
+ Downloading 33 crates                                    
+                                                            
+  Downloaded tinyvec v1.12.0
+ Downloading 32 crates                                    
+                                                            
+  Downloaded cssparser v0.36.0
+ Downloading 31 crates                                    
+                                                            
+  Downloaded uuid v1.24.1
+ Downloading 30 crates                                    
+                                                            
+  Downloaded tinystr v0.8.4
+ Downloading 29 crates                                    
+                                                            
+  Downloaded unicode-ident v1.0.24
+ Downloading 28 crates                                    
+                                                            
+  Downloaded getrandom v0.3.4
+ Downloading 27 crates                                    
+                                                            
+  Downloaded html5ever v0.38.0
+ Downloading 26 crates                                    
+                                                            
+  Downloaded dom_query v0.27.0
+ Downloading 25 crates                                    
+                                                            
+  Downloaded toml v0.9.12+spec-1.1.0
+ Downloading 24 crates                                    
+                                                            
+  Downloaded icu_normalizer_data v2.3.0
+ Downloading 23 crates                                    
+                                                            
+  Downloaded tracing-core v0.1.36
+ Downloading 22 crates                                    
+                                                            
+  Downloaded tauri-runtime-wry v2.11.4
+ Downloading 21 crates                                    
+                                                            
+  Downloaded darling_core v0.23.0
+ Downloading 20 crates                                    
+                                                            
+  Downloaded ico v0.5.0
+ Downloading 19 crates                                    
+                                                            
+  Downloaded url v2.5.8
+ Downloading 18 crates                                    
+                                                            
+  Downloaded derive_more v2.1.1
+ Downloading 17 crates                                    
+                                                            
+  Downloaded typenum v1.20.1
+ Downloading 16 crates                                    
+                                                            
+  Downloaded icu_collections v2.3.0
+ Downloading 15 crates                                    
+                                                            
+  Downloaded icu_locale_core v2.3.0
+ Downloading 14 crates                                    
+                                                            
+  Downloaded unicode-segmentation v1.13.3
+ Downloading 13 crates                                    
+                                                            
+  Downloaded derive_more-impl v2.1.1
+ Downloading 12 crates                                    
+                                                            
+  Downloaded http v1.5.0
+ Downloading 11 crates                                    
+                                                            
+  Downloaded flate2 v1.1.9
+ Downloading 10 crates                                    
+                                                            
+  Downloaded hashbrown v0.12.3
+ Downloading 9 crates                                     
+                                                            
+  Downloaded tauri-utils v2.9.3
+ Downloading 8 crates                                     
+                                                            
+  Downloaded hashbrown v0.17.1
+ Downloading 7 crates                                     
+                                                            
+  Downloaded winnow v1.0.4
+ Downloading 6 crates                                     
+                                                            
+  Downloaded time v0.3.55
+ Downloading 5 crates                                     
+                                                            
+  Downloaded tracing v0.1.44
+ Downloading 4 crates, extracting tracing ...             
+                                                            
+  Downloaded icu_normalizer v2.3.0
+ Downloading 3 crates, extracting icu_normalizer ...      
+                                                            
+  Downloaded tokio v1.53.1
+ Downloading 2 crates, extracting tokio ...               
+                                                            
+  Downloaded webview2-com-sys v0.38.2
+ Downloading 1 crate, extracting webview2-com-sys ...     
+                                                            
+  Downloaded windows v0.61.3
+ Downloading 0 crates, extracting windows ...             
+                                                            
+  Downloaded 260 crates (37.6MiB) in 9.40s (largest was `windows` at 8.9MiB)
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.24
+   Compiling serde_core v1.0.229
+   Compiling windows-link v0.2.1
+   Compiling smallvec v1.15.2
+   Compiling cfg-if v1.0.4
+   Compiling siphasher v1.0.3
+   Compiling litemap v0.8.3
+   Compiling writeable v0.6.4
+   Compiling memchr v2.8.3
+   Compiling utf8_iter v1.0.4
+   Compiling fastrand v2.5.0
+   Compiling stable_deref_trait v1.2.1
+   Compiling itoa v1.0.18
+   Compiling icu_normalizer_data v2.3.0
+   Compiling icu_properties_data v2.3.0
+   Compiling zmij v1.0.23
+   Compiling thiserror v2.0.20
+   Compiling serde v1.0.229
+   Compiling winnow v1.0.4
+   Compiling parking_lot_core v0.9.12
+   Compiling num-conv v0.2.2
+    Building [                           ] 0/360: winnow,…
+                                                            
+   Compiling time-core v0.1.9
+    Building [                           ] 1/360: winnow,…
+                                                            
+   Compiling powerfmt v0.2.0
+    Building [                           ] 2/360: winnow,…
+                                                            
+   Compiling toml_writer v1.1.2+spec-1.1.0
+    Building [                           ] 3/360: winnow,…
+                                                            
+   Compiling phf_shared v0.13.1
+    Building [                           ] 4/360: winnow,…
+                                                            
+   Compiling scopeguard v1.2.0
+    Building [                           ] 5/360: winnow,…
+                                                            
+   Compiling ident_case v1.0.1
+    Building [                           ] 6/360: winnow,…
+                                                            
+   Compiling typeid v1.0.3
+    Building [                           ] 7/360: winnow,…
+                                                            
+   Compiling strsim v0.11.1
+    Building [                           ] 8/360: winnow,…
+                                                            
+   Compiling deranged v0.5.8
+    Building [                           ] 9/360: winnow,…
+                                                            
+   Compiling lock_api v0.4.14
+    Building [                          ] 10/360: winnow,…
+                                                            
+   Compiling phf_generator v0.13.1
+    Building [                          ] 11/360: winnow,…
+                                                            
+   Compiling log v0.4.33
+    Building [                          ] 12/360: winnow,…
+                                                            
+   Compiling byteorder v1.5.0
+    Building [                          ] 13/360: winnow,…
+                                                            
+   Compiling toml_parser v1.1.3+spec-1.1.0
+    Building [>                         ] 14/360: winnow,…
+                                                            
+   Compiling erased-serde v0.4.10
+    Building [>                         ] 15/360: winnow,…
+                                                            
+   Compiling regex-syntax v0.8.11
+    Building [>                         ] 16/360: winnow,…
+    Building [>                         ] 17/360: winnow,…
+                                                            
+   Compiling thiserror v1.0.69
+    Building [>                         ] 18/360: winnow,…
+                                                            
+   Compiling phf_codegen v0.13.1
+    Building [>                         ] 19/360: zmij(bu…
+                                                            
+   Compiling fnv v1.0.7
+    Building [>                         ] 20/360: zmij(bu…
+                                                            
+   Compiling aho-corasick v1.1.5
+    Building [>                         ] 21/360: zmij(bu…
+                                                            
+   Compiling unic-common v0.9.0
+    Building [>                         ] 22/360: zmij(bu…
+                                                            
+   Compiling unic-char-range v0.9.0
+    Building [>                         ] 23/360: zmij(bu…
+    Building [>                         ] 24/360: zmij(bu…
+    Building [>                         ] 25/360: zmij(bu…
+    Building [>                         ] 26/360: quote(b…
+    Building [>                         ] 27/360: quote(b…
+                                                            
+   Compiling new_debug_unreachable v1.0.6
+    Building [=>                        ] 28/360: quote(b…
+                                                            
+   Compiling dunce v1.0.5
+    Building [=>                        ] 29/360: quote(b…
+    Building [=>                        ] 30/360: quote(b…
+    Building [=>                        ] 31/360: quote(b…
+    Building [=>                        ] 32/360: quote(b…
+    Building [=>                        ] 33/360: quote(b…
+                                                            
+   Compiling precomputed-hash v0.1.1
+    Building [=>                        ] 34/360: quote(b…
+    Building [=>                        ] 35/360: quote(b…
+    Building [=>                        ] 36/360: quote(b…
+    Building [=>                        ] 37/360: quote(b…
+    Building [=>                        ] 38/360: quote(b…
+                                                            
+   Compiling unic-char-property v0.9.0
+    Building [=>                        ] 39/360: quote(b…
+                                                            
+   Compiling unic-ucd-version v0.9.0
+    Building [=>                        ] 40/360: quote(b…
+    Building [=>                        ] 41/360: quote(b…
+                                                            
+   Compiling bytes v1.12.1
+    Building [==>                       ] 42/360: quote(b…
+                                                            
+   Compiling getrandom v0.4.3
+    Building [==>                       ] 43/360: quote(b…
+                                                            
+   Compiling equivalent v1.0.2
+    Building [==>                       ] 44/360: quote(b…
+    Building [==>                       ] 45/360: quote(b…
+                                                            
+   Compiling serde_json v1.0.151
+    Building [==>                       ] 46/360: quote(b…
+    Building [==>                       ] 47/360: quote(b…
+                                                            
+   Compiling alloc-no-stdlib v2.0.4
+    Building [==>                       ] 48/360: erased-…
+    Building [==>                       ] 49/360: erased-…
+                                                            
+   Compiling hashbrown v0.17.1
+    Building [==>                       ] 50/360: erased-…
+    Building [==>                       ] 51/360: zmij, e…
+                                                            
+   Compiling regex-automata v0.4.18
+    Building [==>                       ] 52/360: zmij, e…
+                                                            
+   Compiling quick-xml v0.41.0
+    Building [==>                       ] 53/360: zmij, e…
+    Building [==>                       ] 54/360: zmij, e…
+                                                            
+   Compiling windows-sys v0.61.2
+   Compiling base64 v0.22.1
+    Building [===>                      ] 56/360: zmij, e…
+    Building [===>                      ] 57/360: zmij, e…
+    Building [===>                      ] 58/360: zmij, e…
+    Building [===>                      ] 59/360: zmij, s…
+                                                            
+   Compiling unic-ucd-ident v0.9.0
+    Building [===>                      ] 60/360: zmij, s…
+                                                            
+   Compiling anyhow v1.0.104
+    Building [===>                      ] 61/360: zmij, s…
+                                                            
+   Compiling dtoa v1.0.11
+    Building [===>                      ] 62/360: zmij, s…
+                                                            
+   Compiling windows_x86_64_msvc v0.52.6
+    Building [===>                      ] 63/360: windows…
+    Building [===>                      ] 64/360: windows…
+                                                            
+   Compiling parking_lot v0.12.5
+    Building [===>                      ] 65/360: windows…
+                                                            
+   Compiling alloc-stdlib v0.2.4
+    Building [===>                      ] 66/360: windows…
+    Building [===>                      ] 67/360: windows…
+                                                            
+   Compiling percent-encoding v2.3.2
+    Building [===>                      ] 68/360: windows…
+                                                            
+   Compiling autocfg v1.5.1
+    Building [===>                      ] 69/360: windows…
+                                                            
+   Compiling version_check v0.9.5
+    Building [====>                     ] 70/360: windows…
+    Building [====>                     ] 71/360: windows…
+                                                            
+   Compiling ctor-proc-macro v0.0.7
+    Building [====>                     ] 72/360: windows…
+    Building [====>                     ] 73/360: windows…
+                                                            
+   Compiling string_cache v0.9.0
+    Building [====>                     ] 74/360: parking…
+                                                            
+   Compiling brotli-decompressor v5.0.3
+    Building [====>                     ] 75/360: parking…
+    Building [====>                     ] 76/360: parking…
+                                                            
+   Compiling form_urlencoded v1.2.2
+   Compiling dtoa-short v0.3.5
+    Building [====>                     ] 78/360: parking…
+    Building [====>                     ] 79/360: parking…
+    Building [====>                     ] 80/360: anyhow(…
+                                                            
+   Compiling tendril v0.5.1
+    Building [====>                     ] 81/360: anyhow(…
+        Info File src-tauri\Cargo.toml changed. Rebuilding application...
+     Running DevCommand (`cargo  run --no-default-features --color always --`)
+   Compiling proc-macro2 v1.0.107
+   Compiling serde_core v1.0.229
+   Compiling serde v1.0.229
+   Compiling aho-corasick v1.1.5
+   Compiling regex-syntax v0.8.11
+   Compiling version_check v0.9.5
+   Compiling hashbrown v0.17.1
+   Compiling parking_lot v0.12.5
+   Compiling windows-link v0.1.3
+   Compiling bytes v1.12.1
+   Compiling windows-sys v0.61.2
+   Compiling quick-xml v0.41.0
+   Compiling libc v0.2.189
+   Compiling base64 v0.22.1
+   Compiling getrandom v0.4.3
+   Compiling percent-encoding v2.3.2
+   Compiling anyhow v1.0.104
+   Compiling brotli-decompressor v5.0.3
+   Compiling windows_x86_64_msvc v0.52.6
+   Compiling find-msvc-tools v0.1.11
+   Compiling shlex v2.0.1
+   Compiling ctor-proc-macro v0.0.7
+   Compiling autocfg v1.5.1
+    Building [====>                     ] 81/355: serde_c…
+                                                            
+   Compiling dtoa-short v0.3.5
+    Building [=====>                    ] 82/355: serde_c…
+                                                            
+   Compiling windows-targets v0.52.6
+    Building [=====>                    ] 83/355: serde_c…
+                                                            
+   Compiling windows-result v0.3.4
+    Building [=====>                    ] 84/355: serde_c…
+                                                            
+   Compiling string_cache v0.9.0
+    Building [=====>                    ] 85/355: serde_c…
+    Building [=====>                    ] 86/355: serde_c…
+                                                            
+   Compiling form_urlencoded v1.2.2
+    Building [=====>                    ] 87/355: serde_c…
+                                                            
+   Compiling windows-strings v0.4.2
+   Compiling selectors v0.36.1
+    Building [=====>                    ] 89/355: serde_c…
+                                                            
+   Compiling quote v1.0.47
+    Building [=====>                    ] 90/355: serde_c…
+                                                            
+   Compiling tendril v0.5.1
+    Building [=====>                    ] 91/355: serde_c…
+                                                            
+   Compiling camino v1.2.5
+    Building [=====>                    ] 92/355: serde_c…
+                                                            
+   Compiling glob v0.3.4
+    Building [=====>                    ] 93/355: serde_c…
+    Building [=====>                    ] 94/355: serde_c…
+                                                            
+   Compiling servo_arc v0.4.3
+    Building [=====>                    ] 95/355: serde_c…
+                                                            
+   Compiling syn v2.0.119
+    Building [======>                   ] 96/355: serde_c…
+                                                            
+   Compiling syn v3.0.3
+    Building [======>                   ] 97/355: serde_c…
+                                                            
+   Compiling string_cache_codegen v0.6.1
+    Building [======>                   ] 98/355: serde_c…
+                                                            
+   Compiling indexmap v2.14.0
+    Building [======>                   ] 99/355: serde_c…
+                                                            
+   Compiling http v1.5.0
+    Building [======>                  ] 100/355: serde_c…
+    Building [======>                  ] 101/355: serde_c…
+                                                            
+   Compiling ctor v0.8.0
+    Building [======>                  ] 102/355: serde_c…
+                                                            
+   Compiling indexmap v1.9.3
+   Compiling cc v1.4.4
+    Building [======>                  ] 104/355: serde_c…
+    Building [======>                  ] 105/355: serde_c…
+                                                            
+   Compiling bit-vec v0.8.0
+    Building [======>                  ] 106/355: serde_c…
+    Building [======>                  ] 107/355: serde_c…
+    Building [======>                  ] 108/355: serde_c…
+                                                            
+   Compiling bitflags v2.13.1
+    Building [======>                  ] 109/355: serde_c…
+                                                            
+   Compiling rustc-hash v2.1.3
+    Building [======>                  ] 110/355: rustc-h…
+                                                            
+   Compiling schemars v0.8.22
+    Building [======>                  ] 111/355: rustc-h…
+                                                            
+   Compiling hashbrown v0.12.3
+    Building [======>                  ] 112/355: rustc-h…
+                                                            
+   Compiling time v0.3.55
+    Building [======>                  ] 113/355: rustc-h…
+                                                            
+   Compiling brotli v8.0.4
+    Building [=======>                 ] 114/355: rustc-h…
+                                                            
+   Compiling bit-set v0.8.0
+    Building [=======>                 ] 115/355: serde_c…
+        Info File src-tauri\src\lib.rs changed. Rebuilding application...
+     Running DevCommand (`cargo  run --no-default-features --color always --`)
+   Compiling serde_core v1.0.229
+   Compiling aho-corasick v1.1.5
+   Compiling regex-syntax v0.8.11
+   Compiling syn v2.0.119
+   Compiling syn v3.0.3
+   Compiling string_cache_codegen v0.6.1
+   Compiling quick-xml v0.41.0
+   Compiling windows-sys v0.61.2
+   Compiling indexmap v2.14.0
+   Compiling brotli-decompressor v5.0.3
+   Compiling http v1.5.0
+   Compiling find-msvc-tools v0.1.11
+   Compiling indexmap v1.9.3
+   Compiling glob v0.3.4
+   Compiling bit-vec v0.8.0
+   Compiling hashbrown v0.12.3
+   Compiling schemars v0.8.22
+   Compiling bitflags v2.13.1
+   Compiling time v0.3.55
+   Compiling dyn-clone v1.0.20
+   Compiling option-ext v0.2.0
+   Compiling foldhash v0.2.0
+    Building [=======>                 ] 115/355: serde_c…
+                                                            
+   Compiling windows-sys v0.59.0
+    Building [=======>                 ] 116/355: serde_c…
+                                                            
+   Compiling windows-threading v0.1.0
+    Building [=======>                 ] 117/355: serde_c…
+                                                            
+   Compiling bit-set v0.8.0
+    Building [=======>                 ] 118/355: serde_c…
+                                                            
+   Compiling generic-array v0.14.7
+    Building [=======>                 ] 119/355: serde_c…
+                                                            
+   Compiling serde_json v1.0.151
+    Building [=======>                 ] 120/355: serde_c…
+                                                            
+   Compiling cc v1.4.4
+    Building [=======>                 ] 121/355: serde_c…
+                                                            
+   Compiling time-macros v0.2.32
+    Building [=======>                 ] 122/355: serde_c…
+    Building [=======>                 ] 123/355: serde_c…
+                                                            
+   Compiling web_atoms v0.2.6
+    Building [=======>                 ] 124/355: serde_c…
+    Building [=======>                 ] 125/355: serde_c…
+    Building [=======>                 ] 126/355: serde_c…
+                                                            
+   Compiling crc32fast v1.5.0
+    Building [=======>                 ] 127/355: serde_c…
+    Building [========>                ] 128/355: serde_c…
+                                                            
+   Compiling simd-adler32 v0.3.10
+    Building [========>                ] 129/355: serde_c…
+                                                            
+   Compiling typenum v1.20.1
+    Building [========>                ] 130/355: serde_c…
+                                                            
+   Compiling percent-encoding v2.3.2
+    Building [========>                ] 131/355: serde_c…
+                                                            
+   Compiling winnow v0.7.15
+    Building [========>                ] 132/355: serde_c…
+                                                            
+   Compiling crossbeam-utils v0.8.22
+    Building [========>                ] 133/355: serde_c…
+                                                            
+   Compiling adler2 v2.0.1
+    Building [========>                ] 134/355: serde_c…
+        Info File src-tauri\src\main.rs changed. Rebuilding application...
+     Running DevCommand (`cargo  run --no-default-features --color always --`)
+   Compiling serde_core v1.0.229
+   Compiling aho-corasick v1.1.5
+   Compiling regex-syntax v0.8.11
+   Compiling syn v2.0.119
+   Compiling syn v3.0.3
+   Compiling windows-sys v0.61.2
+   Compiling quick-xml v0.41.0
+   Compiling web_atoms v0.2.6
+   Compiling http v1.5.0
+   Compiling brotli-decompressor v5.0.3
+   Compiling find-msvc-tools v0.1.11
+   Compiling time v0.3.55
+   Compiling windows-sys v0.59.0
+   Compiling time-macros v0.2.32
+   Compiling winnow v0.7.15
+   Compiling simd-adler32 v0.3.10
+   Compiling typenum v1.20.1
+   Compiling crc32fast v1.5.0
+   Compiling percent-encoding v2.3.2
+   Compiling crossbeam-utils v0.8.22
+   Compiling raw-window-handle v0.6.2
+   Compiling heck v0.5.0
+    Building [========>                ] 134/355: syn, ti…
+                                                            
+   Compiling form_urlencoded v1.2.2
+    Building [========>                ] 135/355: syn, ti…
+                                                            
+   Compiling adler2 v2.0.1
+    Building [========>                ] 136/355: adler2,…
+                                                            
+   Compiling cc v1.4.4
+    Building [========>                ] 137/355: adler2,…
+                                                            
+   Compiling cookie v0.18.2
+    Building [========>                ] 138/355: adler2,…
+                                                            
+   Compiling miniz_oxide v0.8.9
+    Building [========>                ] 139/355: miniz_o…
+                                                            
+   Compiling fdeflate v0.3.7
+    Building [========>                ] 140/355: miniz_o…
+    Building [========>                ] 141/355: miniz_o…
+    Building [=========>               ] 142/355: miniz_o…
+    Building [=========>               ] 143/355: miniz_o…
+    Building [=========>               ] 144/355: miniz_o…
+    Building [=========>               ] 145/355: miniz_o…
+    Building [=========>               ] 146/355: miniz_o…
+                                                            
+   Compiling brotli v8.0.4
+    Building [=========>               ] 147/355: miniz_o…
+                                                            
+   Compiling windows-version v0.1.7
+    Building [=========>               ] 148/355: windows…
+                                                            
+   Compiling flate2 v1.1.9
+    Building [=========>               ] 149/355: windows…
+                                                            
+   Compiling generic-array v0.14.7
+   Compiling phf_shared v0.13.1
+    Building [=========>               ] 151/355: windows…
+                                                            
+   Compiling once_cell v1.21.4
+    Building [=========>               ] 152/355: miniz_o…
+                                                            
+   Compiling bitflags v1.3.2
+    Building [=========>               ] 153/355: miniz_o…
+                                                            
+   Compiling unicode-segmentation v1.13.3
+    Building [=========>               ] 154/355: syn, ti…
+                                                            
+   Compiling pin-project-lite v0.2.17
+    Building [=========>               ] 155/355: syn, ti…
+                                                            
+   Compiling png v0.17.16
+   Compiling crossbeam-channel v0.5.16
+    Building [==========>              ] 157/355: png, sy…
+                                                            
+   Compiling tracing-core v0.1.36
+    Building [==========>              ] 158/355: png, sy…
+                                                            
+   Compiling tauri-runtime v2.11.3
+    Building [==========>              ] 159/355: png, ta…
+        Info File src-tauri\capabilities\default.json changed. Rebuilding application...
+     Running DevCommand (`cargo  run --no-default-features --color always --`)
+   Compiling serde_core v1.0.229
+   Compiling aho-corasick v1.1.5
+   Compiling regex-syntax v0.8.11
+   Compiling syn v2.0.119
+   Compiling syn v3.0.3
+   Compiling windows-sys v0.61.2
+   Compiling quick-xml v0.41.0
+   Compiling brotli-decompressor v5.0.3
+   Compiling cc v1.4.4
+   Compiling time v0.3.55
+   Compiling windows-sys v0.59.0
+   Compiling time-macros v0.2.32
+   Compiling winnow v0.7.15
+   Compiling generic-array v0.14.7
+   Compiling crossbeam-utils v0.8.22
+   Compiling pin-project-lite v0.2.17
+   Compiling unicode-segmentation v1.13.3
+   Compiling wry v0.55.1
+   Compiling semver v1.0.28
+   Compiling tracing-core v0.1.36
+   Compiling cpufeatures v0.2.17
+   Compiling png v0.17.16
+    Building [==========>              ] 159/355: windows…
+                                                            
+   Compiling tauri-runtime v2.11.3
+    Building [==========>              ] 160/355: windows…
+                                                            
+   Compiling getrandom v0.3.4
+    Building [==========>              ] 161/355: windows…
+                                                            
+   Compiling crossbeam-channel v0.5.16
+    Building [==========>              ] 162/355: windows…
+                                                            
+   Compiling block-buffer v0.10.4
+    Building [==========>              ] 163/355: windows…
+                                                            
+   Compiling crypto-common v0.1.7
+    Building [==========>              ] 164/355: windows…
+    Building [==========>              ] 165/355: windows…
+                                                            
+   Compiling tracing v0.1.44
+    Building [==========>              ] 167/355: tracing…
+                                                            
+   Compiling tauri-runtime-wry v2.11.4
+    Building [==========>              ] 168/355: tracing…
+    Building [==========>              ] 169/355: tracing…
+    Building [==========>              ] 170/355: tracing…
+                                                            
+   Compiling digest v0.10.7
+    Building [===========>             ] 171/355: digest,…
+                                                            
+   Compiling ico v0.5.0
+    Building [===========>             ] 172/355: digest,…
+                                                            
+   Compiling tokio v1.53.1
+    Building [===========>             ] 173/355: digest,…
+    Building [===========>             ] 174/355: digest,…
+                                                            
+   Compiling brotli v8.0.4
+    Building [===========>             ] 175/355: digest,…
+    Building [===========>             ] 176/355: digest,…
+                                                            
+   Compiling sha2 v0.10.9
+    Building [===========>             ] 177/355: digest,…
+                                                            
+   Compiling mime v0.3.17
+    Building [===========>             ] 178/355: windows…
+    Building [===========>             ] 179/355: windows…
+    Building [===========>             ] 180/355: windows…
+    Building [===========>             ] 181/355: windows…
+    Building [===========>             ] 182/355: windows…
+    Building [===========>             ] 183/355: windows…
+    Building [===========>             ] 184/355: windows…
+    Building [============>            ] 185/355: windows…
+    Building [============>            ] 186/355: windows…
+                                                            
+   Compiling vswhom-sys v0.1.3
+    Building [============>            ] 187/355: windows…
+    Building [============>            ] 188/355: windows…
+    Building [============>            ] 189/355: windows…
+                                                            
+   Compiling regex-automata v0.4.18
+    Building [============>            ] 189/355: windows…
+    Building [============>            ] 190/355: windows…
+    Building [============>            ] 191/355: windows…
+                                                            
+   Compiling window-vibrancy v0.6.0
+    Building [============>            ] 191/355: windows…
+                                                            
+   Compiling winapi-util v0.1.11
+    Building [============>            ] 191/355: windows…
+                                                            
+   Compiling dirs-sys v0.5.0
+    Building [============>            ] 191/355: windows…
+    Building [============>            ] 192/355: windows…
+                                                            
+   Compiling dirs v6.0.0
+    Building [============>            ] 192/355: windows…
+                                                            
+   Compiling same-file v1.0.6
+    Building [============>            ] 192/355: windows…
+                                                            
+   Compiling serde_spanned v1.1.1
+    Building [============>            ] 192/355: windows…
+                                                            
+   Compiling serde_json v1.0.151
+    Building [============>            ] 192/355: windows…
+    Building [============>            ] 193/355: windows…
+                                                            
+   Compiling uuid v1.24.1
+    Building [============>            ] 193/355: windows…
+                                                            
+   Compiling toml_datetime v1.1.1+spec-1.1.0
+    Building [============>            ] 194/355: windows…
+                                                            
+   Compiling erased-serde v0.4.10
+    Building [============>            ] 195/355: windows…
+                                                            
+   Compiling camino v1.2.5
+    Building [============>            ] 195/355: windows…
+                                                            
+   Compiling zerovec-derive v0.11.6
+    Building [============>            ] 196/355: windows…
+                                                            
+   Compiling displaydoc v0.2.7
+    Building [============>            ] 197/355: windows…
+                                                            
+   Compiling serde_derive v1.0.229
+    Building [============>            ] 198/355: windows…
+                                                            
+   Compiling thiserror-impl v2.0.20
+    Building [=============>           ] 199/355: windows…
+                                                            
+   Compiling walkdir v2.5.0
+    Building [=============>           ] 200/355: windows…
+                                                            
+   Compiling toml_datetime v0.7.5+spec-1.1.0
+    Building [=============>           ] 201/355: windows…
+    Building [=============>           ] 202/355: windows…
+                                                            
+   Compiling toml v1.1.4+spec-1.1.0
+    Building [=============>           ] 203/355: windows…
+                                                            
+   Compiling cfb v0.7.3
+    Building [=============>           ] 204/355: windows…
+                                                            
+   Compiling rustc_version v0.4.1
+    Building [=============>           ] 205/355: windows…
+    Building [=============>           ] 206/355: windows…
+                                                            
+   Compiling toml v0.9.12+spec-1.1.0
+    Building [=============>           ] 207/355: windows…
+                                                            
+   Compiling vswhom v0.1.0
+    Building [=============>           ] 208/355: windows…
+    Building [=============>           ] 209/355: cfb, ca…
+                                                            
+   Compiling bitflags v2.13.1
+    Building [=============>           ] 210/355: cfb, to…
+        Info File src-tauri\tauri.conf.json changed. Rebuilding application...
+     Running DevCommand (`cargo  run --no-default-features --color always --`)
+   Compiling syn v2.0.119
+   Compiling regex-automata v0.4.18
+   Compiling zerovec-derive v0.11.6
+   Compiling displaydoc v0.2.7
+   Compiling serde_derive v1.0.229
+   Compiling thiserror-impl v2.0.20
+   Compiling serde_json v1.0.151
+   Compiling brotli v8.0.4
+   Compiling toml v1.1.4+spec-1.1.0
+   Compiling windows-sys v0.61.2
+   Compiling cfb v0.7.3
+   Compiling erased-serde v0.4.10
+   Compiling windows-sys v0.59.0
+   Compiling vswhom-sys v0.1.3
+   Compiling walkdir v2.5.0
+   Compiling rustc_version v0.4.1
+   Compiling time v0.3.55
+   Compiling toml v0.9.12+spec-1.1.0
+   Compiling uuid v1.24.1
+   Compiling serde_spanned v1.1.1
+   Compiling bitflags v2.13.1
+   Compiling toml_datetime v1.1.1+spec-1.1.0
+    Building [===========>             ] 183/355: zerovec…
+                                                            
+   Compiling vswhom v0.1.0
+    Building [===========>             ] 184/355: zerovec…
+                                                            
+   Compiling tokio v1.53.1
+    Building [=============>           ] 211/355: zerovec…
+    Building [=============>           ] 212/355: zerovec…
+                                                            
+   Compiling serde_repr v0.1.21
+    Building [==============>          ] 213/355: zerovec…
+    Building [==============>          ] 214/355: zerovec…
+                                                            
+   Compiling infer v0.19.0
+   Compiling serde-untagged v0.1.9
+    Building [==============>          ] 216/355: zerovec…
+    Building [==============>          ] 217/355: zerovec…
+    Building [==============>          ] 219/355: zerovec…
+    Building [==============>          ] 220/355: zerovec…
+    Building [==============>          ] 221/355: zerovec…
+    Building [==============>          ] 222/355: zerovec…
+    Building [==============>          ] 223/355: zerovec…
+    Building [==============>          ] 224/355: zerovec…
+    Building [==============>          ] 225/355: zerovec…
+    Building [==============>          ] 226/355: brotli,…
+    Building [==============>          ] 227/355: brotli,…
+    Building [===============>         ] 228/355: brotli,…
+                                                            
+   Compiling thiserror v2.0.20
+    Building [===============>         ] 229/355: brotli,…
+    Building [===============>         ] 230/355: brotli,…
+    Building [===============>         ] 231/355: brotli,…
+                                                            
+   Compiling webview2-com-sys v0.38.2
+    Building [===============>         ] 232/355: brotli,…
+    Building [===============>         ] 233/355: brotli,…
+    Building [===============>         ] 234/355: brotli,…
+    Building [===============>         ] 235/355: brotli,…
+    Building [===============>         ] 236/355: brotli,…
+    Building [===============>         ] 237/355: brotli,…
+    Building [===============>         ] 238/355: brotli,…
+                                                            
+   Compiling regex v1.13.1
+    Building [===============>         ] 238/355: brotli,…
+                                                            
+   Compiling cookie v0.18.2
+    Building [===============>         ] 238/355: brotli,…
+                                                            
+   Compiling serde v1.0.229
+    Building [===============>         ] 239/355: brotli,…
+    Building [===============>         ] 240/355: brotli,…
+    Building [===============>         ] 241/355: brotli,…
+    Building [================>        ] 242/355: brotli,…
+                                                            
+   Compiling dpi v0.1.2
+   Compiling jsonptr v0.6.3
+   Compiling plist v1.10.0
+   Compiling keyboard-types v0.7.0
+    Building [================>        ] 242/355: brotli,…
+                                                            
+   Compiling indexmap v1.9.3
+   Compiling cargo-platform v0.1.9
+   Compiling cargo_toml v0.22.3
+    Building [================>        ] 242/355: jsonptr…
+    Building [================>        ] 243/355: jsonptr…
+    Building [================>        ] 244/355: jsonptr…
+                                                            
+   Compiling cargo_metadata v0.19.2
+    Building [================>        ] 244/355: jsonptr…
+    Building [================>        ] 245/355: jsonptr…
+    Building [================>        ] 246/355: jsonptr…
+    Building [================>        ] 247/355: jsonptr…
+                                                            
+   Compiling winreg v0.55.0
+    Building [================>        ] 247/355: jsonptr…
+    Building [================>        ] 248/355: jsonptr…
+                                                            
+   Compiling synstructure v0.13.2
+   Compiling darling_core v0.23.0
+   Compiling serde_derive_internals v0.29.1
+    Building [================>        ] 248/355: jsonptr…
+    Building [================>        ] 249/355: jsonptr…
+    Building [================>        ] 250/355: brotli,…
+    Building [================>        ] 251/355: keyboar…
+    Building [================>        ] 252/355: keyboar…
+                                                            
+   Compiling embed-resource v3.0.11
+    Building [================>        ] 252/355: keyboar…
+    Building [================>        ] 253/355: keyboar…
+                                                            
+   Compiling tauri-winres v0.3.6
+    Building [================>        ] 253/355: keyboar…
+    Building [================>        ] 254/355: keyboar…
+    Building [================>        ] 255/355: keyboar…
+                                                            
+   Compiling winapi-util v0.1.11
+   Compiling dirs-sys v0.5.0
+   Compiling softbuffer v0.4.8
+    Building [================>        ] 255/355: keyboar…
+    Building [=================>       ] 256/355: keyboar…
+    Building [=================>       ] 257/355: keyboar…
+                                                            
+   Compiling muda v0.19.3
+    Building [=================>       ] 257/355: keyboar…
+                                                            
+   Compiling dirs v6.0.0
+    Building [=================>       ] 257/355: keyboar…
+    Building [=================>       ] 258/355: keyboar…
+                                                            
+   Compiling zerofrom-derive v0.1.7
+   Compiling yoke-derive v0.8.2
+   Compiling phf_macros v0.13.1
+   Compiling thiserror-impl v1.0.69
+   Compiling cssparser-macros v0.6.1
+   Compiling windows-interface v0.59.3
+   Compiling derive_more-impl v2.1.1
+    Building [=================>       ] 259/355: keyboar…
+                                                            
+   Compiling windows-implement v0.60.2
+    Building [=================>       ] 259/355: keyboar…
+                                                            
+   Compiling webview2-com-macros v0.8.1
+    Building [=================>       ] 259/355: keyboar…
+                                                            
+   Compiling serialize-to-javascript-impl v0.1.2
+    Building [=================>       ] 260/355: keyboar…
+                                                            
+   Compiling same-file v1.0.6
+    Building [=================>       ] 260/355: keyboar…
+                                                            
+   Compiling schemars_derive v0.8.22
+    Building [=================>       ] 261/355: keyboar…
+    Building [=================>       ] 262/355: keyboar…
+    Building [=================>       ] 263/355: keyboar…
+    Building [=================>       ] 264/355: keyboar…
+    Building [=================>       ] 265/355: keyboar…
+    Building [=================>       ] 266/355: yoke-de…
+    Building [=================>       ] 267/355: yoke-de…
+                                                            
+   Compiling serialize-to-javascript v0.1.2
+    Building [=================>       ] 268/355: yoke-de…
+    Building [=================>       ] 269/355: yoke-de…
+    Building [==================>      ] 270/355: yoke-de…
+    Building [==================>      ] 271/355: yoke-de…
+    Building [==================>      ] 272/355: yoke-de…
+                                                            
+   Compiling phf v0.13.1
+    Building [==================>      ] 273/355: yoke-de…
+    Building [==================>      ] 274/355: yoke-de…
+    Building [==================>      ] 275/355: yoke-de…
+                                                            
+   Compiling windows-core v0.61.2
+    Building [==================>      ] 276/355: yoke-de…
+                                                            
+   Compiling web_atoms v0.2.6
+   Compiling cssparser v0.36.0
+    Building [==================>      ] 276/355: yoke-de…
+                                                            
+   Compiling zerofrom v0.1.8
+    Building [==================>      ] 277/355: yoke-de…
+    Building [==================>      ] 278/355: yoke-de…
+    Building [==================>      ] 279/355: yoke-de…
+                                                            
+   Compiling derive_more v2.1.1
+    Building [==================>      ] 280/355: yoke-de…
+                                                            
+   Compiling thiserror v1.0.69
+    Building [==================>      ] 282/355: yoke-de…
+    Building [==================>      ] 283/355: derive_…
+    Building [===================>     ] 284/355: derive_…
+                                                            
+   Compiling yoke v0.8.3
+    Building [===================>     ] 284/355: derive_…
+                                                            
+   Compiling json-patch v3.0.1
+    Building [===================>     ] 284/355: json-pa…
+    Building [===================>     ] 285/355: json-pa…
+    Building [===================>     ] 286/355: json-pa…
+    Building [===================>     ] 287/355: json-pa…
+    Building [===================>     ] 288/355: json-pa…
+                                                            
+   Compiling windows-collections v0.2.0
+   Compiling windows-numerics v0.2.0
+   Compiling windows-future v0.2.1
+    Building [===================>     ] 288/355: json-pa…
+    Building [===================>     ] 289/355: json-pa…
+                                                            
+   Compiling zerovec v0.11.8
+   Compiling zerotrie v0.2.5
+    Building [===================>     ] 289/355: json-pa…
+    Building [===================>     ] 290/355: json-pa…
+    Building [===================>     ] 291/355: json-pa…
+                                                            
+   Compiling darling_macro v0.23.0
+    Building [===================>     ] 292/355: json-pa…
+    Building [===================>     ] 293/355: json-pa…
+    Building [===================>     ] 294/355: json-pa…
+                                                            
+   Compiling windows v0.61.3
+    Building [===================>     ] 294/355: json-pa…
+    Building [===================>     ] 295/355: json-pa…
+                                                            
+   Compiling selectors v0.36.1
+    Building [===================>     ] 295/355: json-pa…
+    Building [===================>     ] 296/355: json-pa…
+    Building [===================>     ] 297/355: darling…
+    Building [===================>     ] 298/355: darling…
+    Building [====================>    ] 299/355: darling…
+                                                            
+   Compiling markup5ever v0.38.0
+    Building [====================>    ] 299/355: darling…
+    Building [====================>    ] 300/355: darling…
+                                                            
+   Compiling html5ever v0.38.0
+    Building [====================>    ] 300/355: darling…
+                                                            
+   Compiling darling v0.23.0
+    Building [====================>    ] 301/355: markup5…
+    Building [====================>    ] 302/355: markup5…
+    Building [====================>    ] 303/355: markup5…
+    Building [====================>    ] 304/355: selecto…
+                                                            
+   Compiling tinystr v0.8.4
+   Compiling potential_utf v0.1.6
+    Building [====================>    ] 304/355: selecto…
+    Building [====================>    ] 304/355: tinystr…
+                                                            
+   Compiling serde_with_macros v3.22.0
+    Building [====================>    ] 305/355: tinystr…
+                                                            
+   Compiling icu_collections v2.3.0
+    Building [====================>    ] 305/355: tinystr…
+    Building [====================>    ] 306/355: tinystr…
+    Building [====================>    ] 307/355: tinystr…
+                                                            
+   Compiling icu_locale_core v2.3.0
+    Building [====================>    ] 307/355: tinystr…
+    Building [====================>    ] 308/355: tinystr…
+    Building [====================>    ] 309/355: tinystr…
+    Building [====================>    ] 310/355: selecto…
+    Building [====================>    ] 311/355: selecto…
+                                                            
+   Compiling dom_query v0.27.0
+    Building [====================>    ] 311/355: selecto…
+    Building [====================>    ] 312/355: icu_col…
+    Building [=====================>   ] 313/355: icu_loc…
+    Building [=====================>   ] 314/355: icu_loc…
+    Building [=====================>   ] 315/355: icu_loc…
+                                                            
+   Compiling serde_with v3.22.0
+    Building [=====================>   ] 316/355: serde_w…
+                                                            
+   Compiling icu_provider v2.3.1
+    Building [=====================>   ] 316/355: serde_w…
+    Building [=====================>   ] 316/355: icu_pro…
+                                                            
+   Compiling icu_properties v2.3.0
+   Compiling icu_normalizer v2.3.0
+    Building [=====================>   ] 316/355: icu_pro…
+12:54:30 AM [vite] (client) page reload index.html
+    Building [=====================>   ] 317/355: icu_pro…
+    Building [=====================>   ] 318/355: icu_pro…
+    Building [=====================>   ] 319/355: icu_pro…
+    Building [=====================>   ] 320/355: icu_pro…
+    Building [=====================>   ] 321/355: icu_pro…
+    Building [=====================>   ] 322/355: icu_pro…
+    Building [=====================>   ] 323/355: icu_pro…
+                                                            
+   Compiling idna_adapter v1.2.2
+    Building [=====================>   ] 323/355: icu_pro…
+                                                            
+   Compiling idna v1.1.0
+    Building [=====================>   ] 323/355: icu_pro…
+    Building [=====================>   ] 324/355: icu_pro…
+    Building [=====================>   ] 325/355: icu_pro…
+    Building [=====================>   ] 326/355: icu_pro…
+                                                            
+   Compiling url v2.5.8
+    Building [=====================>   ] 326/355: icu_pro…
+    Building [======================>  ] 327/355: idna, u…
+    Building [======================>  ] 328/355: idna, u…
+    Building [======================>  ] 329/355: idna, u…
+    Building [======================>  ] 330/355: idna, u…
+    Building [======================>  ] 331/355: url, wi…
+                                                            
+   Compiling urlpattern v0.3.0
+    Building [======================>  ] 331/355: url, ur…
+                                                            
+   Compiling schemars v0.8.22
+    Building [======================>  ] 331/355: url, sc…
+    Building [======================>  ] 332/355: schemar…
+    Building [======================>  ] 333/355: schemar…
+                                                            
+   Compiling tauri-utils v2.9.3
+    Building [======================>  ] 333/355: schemar…
+    Building [======================>  ] 334/355: schemar…
+    Building [======================>  ] 335/355: schemar…
+    Building [======================>  ] 336/355: tauri-u…
+                                                            
+   Compiling tauri-build v2.6.3
+   Compiling tauri-codegen v2.6.3
+    Building [======================>  ] 336/355: tauri-c…
+    Building [======================>  ] 337/355: tauri-c…
+    Building [======================>  ] 338/355: tauri-c…
+    Building [======================>  ] 339/355: tauri-u…
+                                                            
+   Compiling tauri v2.11.5
+   Compiling tauri-macros v2.6.3
+   Compiling stageclock v0.1.0 (C:\Users\matthew\gitrepos\stageclock\src-tauri)
+    Building [======================>  ] 340/355: tauri(b…
+    Building [=======================> ] 341/355: tauri(b…
+    Building [=======================> ] 342/355: tauri(b…
+    Building [=======================> ] 343/355: tauri(b…
+    Building [=======================> ] 344/355: stagecl…
+    Building [=======================> ] 345/355: windows 
+                                                            
+   Compiling tao v0.35.3
+    Building [=======================> ] 345/355: webview…
+    Building [=======================> ] 346/355: webview…
+                                                            
+   Compiling webview2-com v0.38.2
+    Building [=======================> ] 346/355: webview…
+    Building [=======================> ] 347/355: webview…
+    Building [=======================> ] 348/355: webview…
+                                                            
+   Compiling tauri-runtime v2.11.3
+   Compiling wry v0.55.1
+    Building [=======================> ] 348/355: tauri-r…
+    Building [=======================> ] 349/355: webview…
+                                                            
+   Compiling tauri-runtime-wry v2.11.4
+    Building [=======================> ] 349/355: tauri-r…
+    Building [=======================> ] 350/355: tauri-r…
+    Building [=======================> ] 351/355: tauri-r…
+    Building [=======================> ] 352/355: tauri   
+    Building [=======================> ] 353/355: stagecl…
+    Building [=======================> ] 354/355: stagecl…
+                                                            
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 52.15s
+     Running `target\debug\stageclock.exe`
+12:55:39 AM [vite] (client) page reload src/main.ts
+12:55:39 AM [vite] (client) ✨ new dependencies optimized: @tauri-apps/api/window
+12:55:39 AM [vite] (client) ✨ optimized dependencies changed. reloading
+12:55:54 AM [vite] (client) page reload src/main.ts
+12:55:57 AM [vite] (client) page reload index.html
+12:56:10 AM [vite] (client) hmr update /src/styles.css?direct
+1:13:36 AM [vite] (client) page reload src/clock.ts
+1:13:43 AM [vite] (client) page reload src/timer.ts
+1:13:47 AM [vite] (client) page reload src/main.ts
+1:13:53 AM [vite] (client) page reload src/main.ts
+1:13:56 AM [vite] (client) page reload src/main.ts
+1:14:00 AM [vite] (client) hmr update /src/styles.css?direct
+1:19:32 AM [vite] (client) page reload src/clock.ts
+1:19:35 AM [vite] (client) page reload src/main.ts
+1:19:39 AM [vite] (client) hmr update /src/styles.css?direct
+1:21:49 AM [vite] (client) hmr update /src/styles.css?direct
+1:24:04 AM [vite] (client) hmr update /src/styles.css?direct
+1:36:55 AM [vite] (client) hmr update /src/styles.css?direct
+1:37:06 AM [vite] (client) hmr update /src/styles.css?direct
+1:37:13 AM [vite] (client) hmr update /src/styles.css?direct
+1:37:15 AM [vite] (client) hmr update /src/styles.css?direct
+1:38:18 AM [vite] (client) hmr update /src/styles.css?direct
+1:38:33 AM [vite] (client) hmr update /src/styles.css?direct
+1:38:42 AM [vite] (client) hmr update /src/styles.css?direct
+1:39:00 AM [vite] (client) hmr update /src/styles.css?direct
+1:39:12 AM [vite] (client) hmr update /src/styles.css?direct
+1:39:17 AM [vite] (client) hmr update /src/styles.css?direct
+1:39:36 AM [vite] (client) hmr update /src/styles.css?direct
+1:39:36 AM [vite] (client) hmr update /src/styles.css?direct
+1:39:46 AM [vite] (client) hmr update /src/styles.css?direct
+1:39:51 AM [vite] (client) hmr update /src/styles.css?direct
+1:40:32 AM [vite] (client) hmr update /src/styles.css?direct
+1:40:57 AM [vite] (client) hmr update /src/styles.css?direct
+1:41:00 AM [vite] (client) hmr update /src/styles.css?direct
