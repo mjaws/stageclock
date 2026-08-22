@@ -122,6 +122,53 @@ body[data-mode="stopwatch"] #duration-input {
   margin-left: auto;
 }
 
+/* Popout controls */
+.popout-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.popout-controls button {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.popout-controls button:hover:not(:disabled) {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.popout-controls button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.popout-controls button.active {
+  color: var(--bg);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+#save-btn.dirty {
+  color: var(--bg);
+  background: var(--warn);
+  border-color: var(--warn);
+  opacity: 1;
+}
+
+#audience-readout {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+  min-width: 11rem;
+}
+
 /* Stage / clock face */
 #stage {
   flex: 1;
@@ -222,4 +269,10 @@ body[data-mode="stopwatch"] #display {
 
 #hint.visible {
   opacity: 1;
+}
+
+/* Audience popout window */
+body.popout.fullscreen,
+body.popout.fullscreen #stage {
+  cursor: none;
 }

@@ -1,4 +1,5 @@
 export type TimerMode = "countdown" | "stopwatch";
+export type Mode = "clock" | TimerMode;
 export type Band = "ok" | "warn" | "danger";
 
 const WARN_THRESHOLD_MS = 60_000;
@@ -10,6 +11,15 @@ export function getBand(remainingMs: number): Band {
   return "ok";
 }
 
+/** Plain-data copy of a Timer's internal state, for cross-window sync. */
+export interface TimerSnapshot {
+  mode: TimerMode;
+  durationMs: number;
+  baseMs: number;
+  startedAtEpochMs: number | null;
+  running: boolean;
+}
+
 // Countdown/stopwatch values are always derived from wall-clock deltas
 // (Date.now() - startedAtEpochMs) rather than accumulated per-tick, so
 // pausing/resuming or a throttled render loop can never cause drift.
@@ -18,6 +28,7 @@ export class Timer {
   private durationMs: number;
   private baseMs: number;
   private startedAtEpochMs: number | null = null;
+  private everStarted = false;
   running = false;
 
   constructor(mode: TimerMode, durationMs = 0) {
@@ -33,15 +44,30 @@ export class Timer {
     }
   }
 
-  start(): void {
-    if (this.running) return;
-    this.startedAtEpochMs = Date.now();
-    this.running = true;
+  /** Retargets a running countdown to a new duration, effective immediately (from `now`). */
+  retarget(durationMs: number, now = Date.now()): void {
+    this.durationMs = durationMs;
+    this.baseMs = durationMs;
+    if (this.running) {
+      this.startedAtEpochMs = now;
+    }
   }
 
-  pause(): void {
+  start(now = Date.now()): void {
+    if (this.running) return;
+    this.startedAtEpochMs = now;
+    this.running = true;
+    this.everStarted = true;
+  }
+
+  /** True once start() has run since the last reset() — distinguishes "paused" from "fresh". */
+  hasStarted(): boolean {
+    return this.everStarted;
+  }
+
+  pause(now = Date.now()): void {
     if (!this.running) return;
-    this.baseMs = this.currentMs();
+    this.baseMs = this.currentMs(now);
     this.startedAtEpochMs = null;
     this.running = false;
   }
@@ -50,15 +76,39 @@ export class Timer {
     this.running = false;
     this.startedAtEpochMs = null;
     this.baseMs = this.mode === "countdown" ? this.durationMs : 0;
+    this.everStarted = false;
   }
 
-  currentMs(): number {
+  currentMs(now = Date.now()): number {
     if (!this.running || this.startedAtEpochMs === null) return this.baseMs;
-    const elapsedSinceStart = Date.now() - this.startedAtEpochMs;
+    const elapsedSinceStart = now - this.startedAtEpochMs;
     if (this.mode === "countdown") {
       return Math.max(0, this.baseMs - elapsedSinceStart);
     }
     return this.baseMs + elapsedSinceStart;
+  }
+
+  snapshot(): TimerSnapshot {
+    return {
+      mode: this.mode,
+      durationMs: this.durationMs,
+      baseMs: this.baseMs,
+      startedAtEpochMs: this.startedAtEpochMs,
+      running: this.running,
+    };
+  }
+
+  /**
+   * Restores exact internal state from a snapshot. Deliberately bypasses
+   * setDuration()/start(), which are no-ops on baseMs while running (see
+   * setDuration above) and would silently corrupt a snapshot taken from a
+   * running timer.
+   */
+  restore(s: TimerSnapshot): void {
+    this.durationMs = s.durationMs;
+    this.baseMs = s.baseMs;
+    this.startedAtEpochMs = s.startedAtEpochMs;
+    this.running = s.running;
   }
 }
 
