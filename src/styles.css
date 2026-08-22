@@ -1,5 +1,5 @@
 :root {
-  --bg: #0b0b0c;
+  --bg: #0c0b0b;
   --bg-controls: #16171a;
   --border: #2a2b2f;
   --text: #e8e8ea;
@@ -143,9 +143,14 @@ body.chrome-hidden #stage {
   font-weight: 700;
   letter-spacing: 0.02em;
   line-height: 1;
-  font-size: clamp(2.5rem, 18vw, 20rem);
+  font-size: clamp(2.5rem, 28vw, 20rem);
   transition: color 0.2s ease;
-  /*font-family: Arial, Helvetica, sans-serif;*/
+  font-family: "Montserrat Medium", "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+/* Stopwatch text ("MM:SS.CC") is wider than clock/countdown, so it needs a smaller scale to avoid overflow. */
+body[data-mode="stopwatch"] #display {
+  font-size: clamp(2rem, 20vw, 14.5rem);
 }
 
 #display .hm {
@@ -155,7 +160,7 @@ body.chrome-hidden #stage {
 #display .stack {
   display: inline-flex;
   flex-direction: column;
-  height: 1em;
+  height: 0.8em;
   margin-left: 0.2em;
 }
 
@@ -165,7 +170,7 @@ body.chrome-hidden #stage {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-size: 0.44em;
+  font-size: 0.38em;
   font-weight: 600;
   letter-spacing: 0.05em;
   line-height: 1;
