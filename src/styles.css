@@ -1,5 +1,13 @@
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/Montserrat.woff2") format("woff2-variations");
+}
+
 :root {
-  --bg: #0c0b0b;
+  --bg: #161414;
   --bg-controls: #16171a;
   --border: #2a2b2f;
   --text: #e8e8ea;
@@ -22,7 +30,7 @@ body {
   overflow: hidden;
   background: var(--bg);
   color: var(--text);
-  font-family: Inter, "Segoe UI", Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Montserrat", Inter, "Segoe UI", Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   user-select: none;
 }
@@ -62,6 +70,7 @@ body {
   padding: 0.4rem 0.8rem;
   font-size: 0.85rem;
   cursor: pointer;
+  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
 }
 
 .mode-btn:hover {
@@ -99,6 +108,7 @@ body[data-mode="stopwatch"] #duration-input {
   padding: 0.4rem 0.6rem;
   font-size: 0.9rem;
   font-variant-numeric: tabular-nums;
+  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
 }
 
 .timer-controls button,
@@ -110,6 +120,7 @@ body[data-mode="stopwatch"] #duration-input {
   padding: 0.4rem 0.8rem;
   font-size: 0.85rem;
   cursor: pointer;
+  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
 }
 
 .timer-controls button:hover,
@@ -120,6 +131,54 @@ body[data-mode="stopwatch"] #duration-input {
 
 #chrome-toggle-btn {
   margin-left: auto;
+}
+
+/* Popout controls */
+.popout-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.popout-controls button {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+}
+
+.popout-controls button:hover:not(:disabled) {
+  color: var(--text);
+  border-color: var(--accent);
+}
+
+.popout-controls button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.popout-controls button.active {
+  color: var(--bg);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+#save-btn.dirty {
+  color: var(--bg);
+  background: var(--warn);
+  border-color: var(--warn);
+  opacity: 1;
+}
+
+#audience-readout {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+  min-width: 11rem;
 }
 
 /* Stage / clock face */
@@ -140,17 +199,12 @@ body.chrome-hidden #stage {
   display: inline-flex;
   align-items: center;
   font-variant-numeric: tabular-nums;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.02em;
   line-height: 1;
-  font-size: clamp(2.5rem, 28vw, 20rem);
+  font-size: 10rem;
   transition: color 0.2s ease;
-  font-family: "Montserrat Medium", "Segoe UI", Arial, Helvetica, sans-serif;
-}
-
-/* Stopwatch text ("MM:SS.CC") is wider than clock/countdown, so it needs a smaller scale to avoid overflow. */
-body[data-mode="stopwatch"] #display {
-  font-size: clamp(2rem, 20vw, 14.5rem);
+  font-family: "Montserrat", "Segoe UI", Arial, Helvetica, sans-serif;
 }
 
 #display .hm {
@@ -222,4 +276,10 @@ body[data-mode="stopwatch"] #display {
 
 #hint.visible {
   opacity: 1;
+}
+
+/* Audience popout window */
+body.popout.fullscreen,
+body.popout.fullscreen #stage {
+  cursor: none;
 }
