@@ -1,7 +1,7 @@
 import { getCurrentWindow } from "@tauri-apps/api/window";
 import { WebviewWindow } from "@tauri-apps/api/webviewWindow";
 import { emit, listen } from "@tauri-apps/api/event";
-import { Timer, parseDuration, type Mode } from "./timer";
+import { Timer, parseDuration, formatDuration, formatCountdown, getBand, type Mode } from "./timer";
 import {
   computeFrame,
   DisplayView,
@@ -31,6 +31,9 @@ let popoutOpen = false;
 let popoutOpening = false;
 let lastReadoutText = "";
 
+/** An unconfirmed edit to the running countdown's duration, staged but not yet published. */
+let pendingCountdownMs: number | null = null;
+
 const displayEl = document.querySelector<HTMLDivElement>("#display")!;
 const stageEl = document.querySelector<HTMLDivElement>("#stage")!;
 const controlsEl = document.querySelector<HTMLDivElement>("#controls")!;
@@ -47,6 +50,12 @@ const popoutBtn = document.querySelector<HTMLButtonElement>("#popout-btn")!;
 const popoutFullscreenBtn = document.querySelector<HTMLButtonElement>("#popout-fullscreen-btn")!;
 const popoutChromeBtn = document.querySelector<HTMLButtonElement>("#popout-chrome-btn")!;
 const popoutOntopBtn = document.querySelector<HTMLButtonElement>("#popout-ontop-btn")!;
+const nudgeControlsEl = document.querySelector<HTMLDivElement>("#nudge-controls")!;
+const nudgeAmountSelect = document.querySelector<HTMLSelectElement>("#nudge-amount")!;
+const nudgeMinusBtn = document.querySelector<HTMLButtonElement>("#nudge-minus-btn")!;
+const nudgePlusBtn = document.querySelector<HTMLButtonElement>("#nudge-plus-btn")!;
+const confirmEditBtn = document.querySelector<HTMLButtonElement>("#confirm-edit-btn")!;
+const cancelEditBtn = document.querySelector<HTMLButtonElement>("#cancel-edit-btn")!;
 
 const view = new DisplayView(displayEl);
 
@@ -89,17 +98,80 @@ function save(): void {
   refreshDirty();
 }
 
+/** Reflects the countdown's current Duration (Reset target) in the duration-input field. */
+function syncDurationInputToDuration(): void {
+  durationInput.value = formatDuration(draft.countdown.snapshot().durationMs / 1000);
+}
+
+/** Discards any unconfirmed manual edit, e.g. because Start/Pause/Reset/Nudge was used. */
+function discardPendingEdit(): void {
+  if (pendingCountdownMs === null) return;
+  pendingCountdownMs = null;
+  updatePendingEditUi();
+  syncDurationInputToDuration();
+}
+
+function updatePendingEditUi(): void {
+  const active = pendingCountdownMs !== null;
+  confirmEditBtn.classList.toggle("hidden", !active);
+  cancelEditBtn.classList.toggle("hidden", !active);
+}
+
+/** Nudge controls only make sense for a running countdown. */
+function updateNudgeVisibility(): void {
+  const showNudge = draft.mode === "countdown" && draft.countdown.running;
+  nudgeControlsEl.classList.toggle("hidden", !showNudge);
+}
+
+/** Commits the staged manual edit into both draft and live at once, publishing it immediately. */
+function confirmPendingEdit(): void {
+  if (pendingCountdownMs === null) return;
+  const now = Date.now();
+  draft.countdown.retarget(pendingCountdownMs, now);
+  live.countdown.retarget(pendingCountdownMs, now);
+  pendingCountdownMs = null;
+  updatePendingEditUi();
+  publish();
+  refreshDirty();
+}
+
+function cancelPendingEdit(): void {
+  pendingCountdownMs = null;
+  updatePendingEditUi();
+  syncDurationInputToDuration();
+}
+
+/**
+ * Immediately shifts the running countdown's remaining time by ± the selected amount,
+ * preserving elapsed time, and publishes it straight away — same as Start/Pause/Reset,
+ * no staging or freeze involved. Any in-progress manual edit is discarded first.
+ */
+function nudgeCountdown(sign: 1 | -1): void {
+  if (draft.mode !== "countdown" || !draft.countdown.running) return;
+  discardPendingEdit();
+  const deltaMs = sign * Number(nudgeAmountSelect.value);
+  draft.countdown.nudge(deltaMs);
+  live.countdown.nudge(deltaMs);
+  syncDurationInputToDuration();
+  publish();
+  refreshDirty();
+}
+
 function setDraftMode(next: Mode): void {
+  discardPendingEdit();
   draft.mode = next;
   applyModeToBody(document.body, draft.mode);
   modeButtons.forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.mode === next);
   });
+  updateNudgeVisibility();
+  if (next === "countdown") syncDurationInputToDuration();
   view.invalidate();
   refreshDirty();
 }
 
 function transport(action: "start" | "pause" | "reset"): void {
+  discardPendingEdit();
   const now = Date.now();
   const dTimer = activeTimerOf(draft);
   const lTimer = activeTimerOf(live);
@@ -113,20 +185,25 @@ function transport(action: "start" | "pause" | "reset"): void {
     dTimer?.reset();
     lTimer?.reset();
   }
+  updateNudgeVisibility();
   publish();
   refreshDirty();
 }
 
+/**
+ * While the countdown is running, edits are staged as a Pending Edit rather than applied
+ * immediately — the display freezes on the pending value until Confirm or Cancel. Before
+ * the countdown starts (or while paused), edits still apply immediately as before.
+ */
 function applyDurationInput(commit: boolean): void {
   if (draft.mode !== "countdown") return;
   const parsedMs = parseDuration(durationInput.value);
   if (parsedMs === null) return;
 
   if (draft.countdown.running) {
-    if (commit) {
-      draft.countdown.retarget(parsedMs);
-      refreshDirty();
-    }
+    pendingCountdownMs = parsedMs;
+    updatePendingEditUi();
+    if (commit) confirmPendingEdit();
   } else {
     draft.countdown.setDuration(parsedMs);
     refreshDirty();
@@ -197,7 +274,15 @@ async function closePopout(): Promise<void> {
 
 function loop(): void {
   const now = new Date();
-  view.apply(computeFrame(draft, now));
+  if (pendingCountdownMs !== null) {
+    view.apply({
+      kind: "text",
+      content: formatCountdown(pendingCountdownMs),
+      bandClass: `band-${getBand(pendingCountdownMs)}`,
+    });
+  } else {
+    view.apply(computeFrame(draft, now));
+  }
   updateAudienceReadout(now);
   requestAnimationFrame(loop);
 }
@@ -229,8 +314,9 @@ durationInput.addEventListener("input", () => applyDurationInput(false));
 durationInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter" && draft.mode === "countdown") {
     e.preventDefault();
+    const wasRunning = draft.countdown.running;
     applyDurationInput(true);
-    transport("start");
+    if (!wasRunning) transport("start");
   }
 });
 
@@ -243,6 +329,11 @@ startBtn.addEventListener("click", () => {
 
 pauseBtn.addEventListener("click", () => transport("pause"));
 resetBtn.addEventListener("click", () => transport("reset"));
+
+nudgeMinusBtn.addEventListener("click", () => nudgeCountdown(-1));
+nudgePlusBtn.addEventListener("click", () => nudgeCountdown(1));
+confirmEditBtn.addEventListener("click", () => confirmPendingEdit());
+cancelEditBtn.addEventListener("click", () => cancelPendingEdit());
 
 saveBtn.addEventListener("click", save);
 
@@ -288,6 +379,9 @@ window.addEventListener("keydown", (e) => {
   if (e.key === "F9") {
     e.preventDefault();
     toggleChrome();
+  } else if (e.key === "Escape" && pendingCountdownMs !== null) {
+    e.preventDefault();
+    cancelPendingEdit();
   }
 });
 

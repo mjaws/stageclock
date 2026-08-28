@@ -1,11 +1,11 @@
 import { formatTimeOfDay } from "./clock";
-import { Timer, getBand, formatDuration, formatStopwatch, type Mode } from "./timer";
+import { Timer, getBand, formatCountdown, formatStopwatch, type Mode } from "./timer";
 
 export const BAND_CLASSES = ["band-neutral", "band-ok", "band-warn", "band-danger"] as const;
 export type BandClass = (typeof BAND_CLASSES)[number];
 
 /** Target proportion of the stage's box the display text should fill. */
-const FILL_WIDTH_RATIO = 0.87;
+const FILL_WIDTH_RATIO = 0.91;
 const FILL_HEIGHT_RATIO = 0.82;
 
 /** The three-part state that fully determines what a display shows. */
@@ -38,7 +38,7 @@ export function computeFrame(state: ClockState, now: Date): Frame {
     const remainingMs = state.countdown.currentMs(now.getTime());
     return {
       kind: "text",
-      content: formatDuration(Math.ceil(remainingMs / 1000)),
+      content: formatCountdown(remainingMs),
       bandClass: `band-${getBand(remainingMs)}`,
     };
   }
@@ -118,7 +118,7 @@ export function formatAudienceSummary(state: ClockState, now: Date): string {
   const ms = timer.currentMs(now.getTime());
   const text =
     state.mode === "countdown"
-      ? formatDuration(Math.ceil(ms / 1000))
+      ? formatCountdown(ms)
       : formatStopwatch(ms);
   const label = state.mode === "countdown" ? "Countdown" : "Stopwatch";
   const glyph = timer.running ? "▶" : "❚❚";

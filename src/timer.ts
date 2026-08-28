@@ -2,12 +2,12 @@ export type TimerMode = "countdown" | "stopwatch";
 export type Mode = "clock" | TimerMode;
 export type Band = "ok" | "warn" | "danger";
 
-const WARN_THRESHOLD_MS = 60_000;
+// const WARN_THRESHOLD_MS = 60_000;
 const DANGER_THRESHOLD_MS = 10_000;
 
 export function getBand(remainingMs: number): Band {
   if (remainingMs <= DANGER_THRESHOLD_MS) return "danger";
-  if (remainingMs <= WARN_THRESHOLD_MS) return "warn";
+  // if (remainingMs <= WARN_THRESHOLD_MS) return "warn";
   return "ok";
 }
 
@@ -50,6 +50,20 @@ export class Timer {
     this.baseMs = durationMs;
     if (this.running) {
       this.startedAtEpochMs = now;
+    }
+  }
+
+  /**
+   * Shifts a running countdown's remaining time by a relative delta, preserving elapsed
+   * time — unlike retarget(), which discards it and restarts the countdown from now.
+   * Also shifts the Reset target (durationMs) by the same delta.
+   */
+  nudge(deltaMs: number): void {
+    this.durationMs = Math.max(0, this.durationMs + deltaMs);
+    if (this.running) {
+      this.baseMs = Math.max(0, this.baseMs + deltaMs);
+    } else {
+      this.baseMs = this.mode === "countdown" ? this.durationMs : 0;
     }
   }
 
@@ -129,16 +143,31 @@ export function parseDuration(input: string): number | null {
   return ((hours * 60 + minutes) * 60 + seconds) * 1000;
 }
 
-/** Formats a whole-second count as "MM:SS", or "HH:MM:SS" once it reaches an hour. */
+/** Formats a whole-second count as "M:SS", or "HH:MM:SS" once it reaches an hour. */
 export function formatDuration(totalSeconds: number): string {
   const clamped = Math.max(0, totalSeconds);
   const hours = Math.floor(clamped / 3600);
   const minutes = Math.floor((clamped % 3600) / 60);
   const seconds = clamped % 60;
-
-  const mm = String(minutes).padStart(2, "0");
   const ss = String(seconds).padStart(2, "0");
-  return hours > 0 ? `${hours}:${mm}:${ss}` : `${mm}:${ss}`;
+
+  if (hours > 0) {
+    const mm = String(minutes).padStart(2, "0");
+    return `${hours}:${mm}:${ss}`;
+  }
+  return `${minutes}:${ss}`;
+}
+
+/** Formats remaining milliseconds for a countdown: "H:MM:SS" / "M:SS", switching to "S.T" below one minute. */
+export function formatCountdown(remainingMs: number): string {
+  const clamped = Math.max(0, remainingMs);
+  if (clamped < 60_000) {
+    const deciseconds = Math.min(599, Math.ceil(clamped / 100));
+    const seconds = Math.floor(deciseconds / 10);
+    const tenths = deciseconds % 10;
+    return `${seconds}.${tenths}`;
+  }
+  return formatDuration(Math.ceil(clamped / 1000));
 }
 
 /** Formats elapsed milliseconds as "MM:SS.CC" (hundredths), or "HH:MM:SS.CC" once it reaches an hour. */

@@ -9,13 +9,17 @@ A two-window, distraction-free stage timer built with [Tauri](https://tauri.app/
 Switch modes from the control window's toolbar:
 
 - **Clock** — current time of day, 12-hour format (e.g. `4:32`), with AM/PM and seconds shown as a smaller stacked readout beside the main time.
-- **Countdown** — counts down from a duration you enter (`MM:SS` or `HH:MM:SS`), rounding up to the nearest whole second. The display recolors as time runs low:
-  - Neutral above 60 seconds remaining
-  - Amber/warning at 60 seconds or under
+- **Countdown** — counts down from a duration you enter (`MM:SS` or `HH:MM:SS`), rounding up to the nearest whole second. Displayed as `M:SS` (or `H:MM:SS` past an hour) while a minute or more remains, then switches to a decisecond-precision `S.T` readout (e.g. `9.5`) for the final minute. The display recolors as time runs low:
+  - Neutral above 10 seconds remaining
   - Red/danger (pulsing) at 10 seconds or under
 - **Stopwatch** — counts up from zero as `MM:SS.CC` (hundredths), extending to `H:MM:SS.CC` past an hour.
 
-Countdown and stopwatch share Start / Pause / Reset controls. All timing is computed from wall-clock timestamps rather than accumulated per render tick, so pausing/resuming, a throttled render loop, or a cross-window sync can't cause drift. A running countdown can also be retargeted to a new duration without resetting its elapsed time.
+Countdown and stopwatch share Start / Pause / Reset controls. All timing is computed from wall-clock timestamps rather than accumulated per render tick, so pausing/resuming, a throttled render loop, or a cross-window sync can't cause drift.
+
+#### Adjusting a running countdown
+
+- **Nudge** — the ± controls next to the duration field shift the countdown's remaining time (and its Reset target) by a fixed amount, picked from the dropdown (5s/10s/30s/1m/5m), without resetting elapsed time. Nudges apply and publish immediately, just like Start/Pause/Reset.
+- Typing directly into the duration field while the countdown is running stages a pending edit instead of applying immediately — the control window's display freezes on the typed value. Click **Confirm** (or press Enter) to snap both the duration and remaining time to that value, discarding elapsed time and publishing right away; click **Cancel** (or press Escape) to discard the edit and resume the ticking display. Before the countdown starts, or while it's paused, typed edits still apply immediately as before.
 
 ### Control window + audience popout
 

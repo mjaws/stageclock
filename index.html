@@ -25,6 +25,19 @@
             placeholder="MM:SS"
             aria-label="Countdown duration"
           />
+          <div class="nudge-group hidden" id="nudge-controls">
+            <button type="button" id="nudge-minus-btn" aria-label="Subtract from countdown">−</button>
+            <select id="nudge-amount" aria-label="Adjustment amount">
+              <option value="5000">5s</option>
+              <option value="10000">10s</option>
+              <option value="30000" selected>30s</option>
+              <option value="60000">1m</option>
+              <option value="300000">5m</option>
+            </select>
+            <button type="button" id="nudge-plus-btn" aria-label="Add to countdown">+</button>
+          </div>
+          <button type="button" id="confirm-edit-btn" class="hidden">Confirm</button>
+          <button type="button" id="cancel-edit-btn" class="hidden">Cancel</button>
           <button type="button" id="start-btn">Start</button>
           <button type="button" id="pause-btn">Pause</button>
           <button type="button" id="reset-btn">Reset</button>

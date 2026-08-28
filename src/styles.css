@@ -111,6 +111,32 @@ body[data-mode="stopwatch"] #duration-input {
   font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
 }
 
+.hidden {
+  display: none !important;
+}
+
+.nudge-group {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+#nudge-amount {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.35rem 0.3rem;
+  font-size: 0.85rem;
+  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+}
+
+#confirm-edit-btn {
+  color: var(--bg);
+  background: var(--ok);
+  border-color: var(--ok);
+}
+
 .timer-controls button,
 #chrome-toggle-btn {
   background: transparent;
