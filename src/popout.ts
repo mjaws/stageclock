@@ -3,7 +3,7 @@ import { emit } from "@tauri-apps/api/event";
 import { Timer } from "./timer";
 import { computeFrame, DisplayView, TitleView, applyModeToBody, type ClockState } from "./display";
 import { EVT_STATE, EVT_READY, EVT_CLOSED, type StatePayload } from "./protocol";
-import { applySettings, bandConfigFrom, defaultSettings, type Settings } from "./settings";
+import { applySettings, bandConfigFrom, countdownFormatFrom, defaultSettings, type Settings } from "./settings";
 
 const self = getCurrentWebviewWindow();
 
@@ -26,7 +26,9 @@ let chromeHidden = false;
 let hintTimeout: number | undefined;
 
 function loop(): void {
-  view.apply(computeFrame(state, new Date(), bandConfigFrom(settings)));
+  const bandConfig = bandConfigFrom(settings);
+  const countdownFormat = countdownFormatFrom(settings);
+  view.apply(computeFrame(state, new Date(), bandConfig, countdownFormat));
   requestAnimationFrame(loop);
 }
 

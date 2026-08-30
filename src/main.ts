@@ -25,6 +25,7 @@ import {
 import {
   applySettings,
   bandConfigFrom,
+  countdownFormatFrom,
   defaultSettings,
   loadPersistedSettings,
   savePersistedSettings,
@@ -243,7 +244,7 @@ function applyDurationInput(commit: boolean): void {
 
 function updateAudienceReadout(now: Date): void {
   if (!popoutOpen) return;
-  const text = `Audience: ${formatAudienceSummary(live, now)}`;
+  const text = `Audience: ${formatAudienceSummary(live, now, countdownFormatFrom(liveSettings))}`;
   if (text !== lastReadoutText) {
     audienceReadoutEl.textContent = text;
     lastReadoutText = text;
@@ -349,14 +350,15 @@ async function closeSettingsWindow(): Promise<void> {
 function loop(): void {
   const now = new Date();
   const bandConfig = bandConfigFrom(draftSettings);
+  const countdownFormat = countdownFormatFrom(draftSettings);
   if (pendingCountdownMs !== null) {
     view.apply({
       kind: "text",
-      content: formatCountdown(pendingCountdownMs),
+      content: formatCountdown(pendingCountdownMs, countdownFormat),
       bandClass: `band-${getBand(pendingCountdownMs, bandConfig)}`,
     });
   } else {
-    view.apply(computeFrame(draft, now, bandConfig));
+    view.apply(computeFrame(draft, now, bandConfig, countdownFormat));
   }
   updateAudienceReadout(now);
   requestAnimationFrame(loop);

@@ -164,14 +164,19 @@ export function formatDuration(totalSeconds: number): string {
   return `${minutes}:${ss}`;
 }
 
-/** Formats remaining milliseconds for a countdown: "H:MM:SS" / "M:SS", switching to "S.T" below one minute. */
-export function formatCountdown(remainingMs: number): string {
+export interface FormatCountdownOptions {
+  /** When true, keep "M:SS" below one minute instead of switching to "SS.T". */
+  minutesBelow60?: boolean;
+}
+
+/** Formats remaining milliseconds for a countdown: "H:MM:SS" / "M:SS", switching to "SS.T" below one minute. */
+export function formatCountdown(remainingMs: number, options: FormatCountdownOptions = {}): string {
   const clamped = Math.max(0, remainingMs);
-  if (clamped < 60_000) {
+  if (clamped < 60_000 && !options.minutesBelow60) {
     const deciseconds = Math.min(599, Math.ceil(clamped / 100));
     const seconds = Math.floor(deciseconds / 10);
     const tenths = deciseconds % 10;
-    return `${seconds}.${tenths}`;
+    return `${String(seconds).padStart(2, "0")}.${tenths}`;
   }
   return formatDuration(Math.ceil(clamped / 1000));
 }

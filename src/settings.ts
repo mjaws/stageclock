@@ -37,6 +37,8 @@ export interface Settings {
     font: string;
     /** Multiplier applied to the clock's auto-fit target size. */
     sizeRatio: number;
+    /** When true, countdowns below one minute show "M:SS" instead of "SS.T". */
+    minutesBelow60: boolean;
   };
   colors: {
     neutral: ColorValue;
@@ -72,7 +74,7 @@ export const TITLE_POSITIONS: { value: TitlePosition; label: string }[] = [
 
 export function defaultSettings(): Settings {
   return {
-    clock: { font: "Montserrat", sizeRatio: 1 },
+    clock: { font: "Montserrat", sizeRatio: 1, minutesBelow60: false },
     colors: {
       neutral: { hex: "#e8e8ea", alpha: 1 },
       ok: { hex: "#3ddc84", alpha: 1 },
@@ -117,6 +119,10 @@ export function bandConfigFrom(settings: Settings): BandConfig {
       thresholdMs: settings.colors.danger.thresholdSec * 1000,
     },
   };
+}
+
+export function countdownFormatFrom(settings: Settings): { minutesBelow60: boolean } {
+  return { minutesBelow60: settings.clock.minutesBelow60 };
 }
 
 /** Pushes a Settings object into both windows' CSS custom properties and views. */
@@ -270,6 +276,7 @@ export interface SettingsPanelElements {
   clockFontSelect: HTMLSelectElement;
   clockFontCustom: HTMLInputElement;
   clockSizeRange: HTMLInputElement;
+  clockMinutesBelow60: HTMLInputElement;
   neutralColor: HTMLInputElement;
   neutralAlpha: HTMLInputElement;
   okColor: HTMLInputElement;
@@ -315,6 +322,12 @@ export class SettingsPanel {
       this.current.clock.sizeRatio = Number(els.clockSizeRange.value);
     });
     this.renderers.push(() => (els.clockSizeRange.value = String(this.current.clock.sizeRatio)));
+    this.wireField(
+      els.clockMinutesBelow60,
+      "change",
+      () => (this.current.clock.minutesBelow60 = els.clockMinutesBelow60.checked),
+    );
+    this.renderers.push(() => (els.clockMinutesBelow60.checked = this.current.clock.minutesBelow60));
     this.renderers.push(
       bindFontPicker(
         els.clockFontSelect,

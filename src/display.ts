@@ -1,5 +1,13 @@
 import { formatTimeOfDay } from "./clock";
-import { Timer, getBand, formatCountdown, formatStopwatch, type BandConfig, type Mode } from "./timer";
+import {
+  Timer,
+  getBand,
+  formatCountdown,
+  formatStopwatch,
+  type BandConfig,
+  type FormatCountdownOptions,
+  type Mode,
+} from "./timer";
 
 export const BAND_CLASSES = ["band-neutral", "band-ok", "band-warn", "band-danger"] as const;
 export type BandClass = (typeof BAND_CLASSES)[number];
@@ -22,7 +30,12 @@ export interface Frame {
 }
 
 /** Pure. No DOM, no globals. */
-export function computeFrame(state: ClockState, now: Date, bandConfig: BandConfig): Frame {
+export function computeFrame(
+  state: ClockState,
+  now: Date,
+  bandConfig: BandConfig,
+  countdownFormat: FormatCountdownOptions = {},
+): Frame {
   if (state.mode === "clock") {
     const { hm, seconds, period } = formatTimeOfDay(now);
     return {
@@ -38,7 +51,7 @@ export function computeFrame(state: ClockState, now: Date, bandConfig: BandConfi
     const remainingMs = state.countdown.currentMs(now.getTime());
     return {
       kind: "text",
-      content: formatCountdown(remainingMs),
+      content: formatCountdown(remainingMs, countdownFormat),
       bandClass: `band-${getBand(remainingMs, bandConfig)}`,
     };
   }
@@ -167,7 +180,11 @@ export function applyModeToBody(body: HTMLElement, mode: Mode): void {
 }
 
 /** One-line summary of what a ClockState shows, for the primary's "audience" readout. */
-export function formatAudienceSummary(state: ClockState, now: Date): string {
+export function formatAudienceSummary(
+  state: ClockState,
+  now: Date,
+  countdownFormat: FormatCountdownOptions = {},
+): string {
   if (state.mode === "clock") {
     const { hm, period } = formatTimeOfDay(now);
     return `Clock ${hm} ${period}`;
@@ -177,7 +194,7 @@ export function formatAudienceSummary(state: ClockState, now: Date): string {
   const ms = timer.currentMs(now.getTime());
   const text =
     state.mode === "countdown"
-      ? formatCountdown(ms)
+      ? formatCountdown(ms, countdownFormat)
       : formatStopwatch(ms);
   const label = state.mode === "countdown" ? "Countdown" : "Stopwatch";
   const glyph = timer.running ? "▶" : "❚❚";

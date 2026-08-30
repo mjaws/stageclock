@@ -11,6 +11,7 @@ const panel = new SettingsPanel(
     clockFontSelect: document.querySelector<HTMLSelectElement>("#clock-font-select")!,
     clockFontCustom: document.querySelector<HTMLInputElement>("#clock-font-custom")!,
     clockSizeRange: document.querySelector<HTMLInputElement>("#clock-size-range")!,
+    clockMinutesBelow60: document.querySelector<HTMLInputElement>("#clock-minutes-below-60")!,
     neutralColor: document.querySelector<HTMLInputElement>("#neutral-color")!,
     neutralAlpha: document.querySelector<HTMLInputElement>("#neutral-alpha")!,
     okColor: document.querySelector<HTMLInputElement>("#ok-color")!,
