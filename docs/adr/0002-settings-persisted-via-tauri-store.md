@@ -1,0 +1,3 @@
+# Settings persisted via Tauri store plugin, not a portable-adjacent file
+
+Settings are persisted with Tauri's store plugin, writing to the per-user app-data folder, rather than a JSON file next to the portable exe. The app is otherwise distributed as a portable exe specifically to avoid an installer and UAC prompts, so a future reader may expect config to live alongside the exe too. App-data was chosen instead because it avoids failures when the exe's folder is read-only (e.g. `Program Files`) and matches how Tauri apps conventionally persist state; the portable-exe preference is about avoiding installers, not about avoiding any writes outside the exe's own folder.

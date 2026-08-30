@@ -1,8 +1,9 @@
 import { getCurrentWebviewWindow } from "@tauri-apps/api/webviewWindow";
 import { emit } from "@tauri-apps/api/event";
 import { Timer } from "./timer";
-import { computeFrame, DisplayView, applyModeToBody, type ClockState } from "./display";
-import { EVT_STATE, EVT_READY, EVT_CLOSED, EVT_OPACITY, type StatePayload } from "./protocol";
+import { computeFrame, DisplayView, TitleView, applyModeToBody, type ClockState } from "./display";
+import { EVT_STATE, EVT_READY, EVT_CLOSED, type StatePayload } from "./protocol";
+import { applySettings, bandConfigFrom, defaultSettings, type Settings } from "./settings";
 
 const self = getCurrentWebviewWindow();
 
@@ -11,18 +12,21 @@ const state: ClockState = {
   countdown: new Timer("countdown", 0),
   stopwatch: new Timer("stopwatch", 0),
 };
+let settings: Settings = defaultSettings();
 
 const displayEl = document.querySelector<HTMLDivElement>("#display")!;
 const stageEl = document.querySelector<HTMLDivElement>("#stage")!;
 const hintEl = document.querySelector<HTMLDivElement>("#hint")!;
-const view = new DisplayView(displayEl);
+const titleEl = document.querySelector<HTMLDivElement>("#title")!;
+const titleView = new TitleView(titleEl);
+const view = new DisplayView(displayEl, (px) => titleView.setClockFontPx(px));
 
 let started = false;
 let chromeHidden = false;
 let hintTimeout: number | undefined;
 
 function loop(): void {
-  view.apply(computeFrame(state, new Date()));
+  view.apply(computeFrame(state, new Date(), bandConfigFrom(settings)));
   requestAnimationFrame(loop);
 }
 
@@ -81,16 +85,14 @@ async function main(): Promise<void> {
     state.mode = payload.mode;
     state.countdown.restore(payload.countdown);
     state.stopwatch.restore(payload.stopwatch);
+    settings = payload.settings;
+    applySettings(settings, view, titleView);
     applyModeToBody(document.body, state.mode);
     view.invalidate();
     if (!started) {
       started = true;
       requestAnimationFrame(loop);
     }
-  });
-
-  await self.listen<number>(EVT_OPACITY, ({ payload }) => {
-    document.body.style.setProperty("--bg-alpha", String(payload / 100));
   });
 
   await self.onCloseRequested(async () => {

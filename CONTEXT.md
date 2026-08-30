@@ -13,7 +13,7 @@ The published state broadcast to the popout (audience-facing) window. Only chang
 _Avoid_: broadcast state, published state
 
 **Save**:
-The explicit action that publishes all of Draft to Live at once (mode, timers, everything), making it visible in the popout.
+The explicit action that publishes all of Draft to Live at once (mode, timers, Settings, everything), making it visible in the popout.
 _Avoid_: publish, sync
 
 **Duration**:
@@ -35,3 +35,19 @@ _Avoid_: apply, commit
 **Nudge**:
 An immediate ± adjustment (5s/10s/30s/1m/5m, via a magnitude dropdown and +/- buttons) applied directly to both Duration and Remaining Time by the same relative delta — elapsed time is preserved, so Remaining Time simply shifts rather than resetting. Behaves like Start/Pause/Reset: instant, published immediately, never stages a Pending Edit or freezes the display. Discards any in-progress Pending Edit first. Only shown while the countdown is running.
 _Avoid_: increment control, adjuster
+
+**Settings**:
+The persisted appearance customization — clock font/size/colors, background color, and Title (text, font, size, color, position) — shared globally between the control window and popout, and persisted across relaunches. Unlike Duration or the countdown's running state, Settings changes flow through the same Draft/Save/Live pipeline as everything else: previewed in the control window, then published on Save.
+_Avoid_: preferences, config, theme
+
+**Title**:
+A free-text label the operator sets, shown near the clock face at one of a fixed set of corner/edge anchors, in both the control window and the popout. Distinct from the OS window title.
+_Avoid_: label, caption, window title
+
+**Band**:
+One of four color-states applied to the clock face: `neutral` (always used in clock/stopwatch modes), or `ok` → `warn` → `danger` (used in countdown mode, activating in that order as Remaining Time falls). Each of `ok`/`warn`/`danger` has its own color and Threshold; `warn` and `danger` can each be disabled independently, in which case the clock holds the previous enabled band's color instead of switching to the disabled one.
+_Avoid_: state, color state, class
+
+**Threshold**:
+The Remaining Time at which a countdown's Band advances to `warn` or `danger`. Set independently per band, as an absolute time value rather than a percentage of Duration.
+_Avoid_: cutoff, trigger point

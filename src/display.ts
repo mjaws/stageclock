@@ -1,5 +1,5 @@
 import { formatTimeOfDay } from "./clock";
-import { Timer, getBand, formatCountdown, formatStopwatch, type Mode } from "./timer";
+import { Timer, getBand, formatCountdown, formatStopwatch, type BandConfig, type Mode } from "./timer";
 
 export const BAND_CLASSES = ["band-neutral", "band-ok", "band-warn", "band-danger"] as const;
 export type BandClass = (typeof BAND_CLASSES)[number];
@@ -22,7 +22,7 @@ export interface Frame {
 }
 
 /** Pure. No DOM, no globals. */
-export function computeFrame(state: ClockState, now: Date): Frame {
+export function computeFrame(state: ClockState, now: Date, bandConfig: BandConfig): Frame {
   if (state.mode === "clock") {
     const { hm, seconds, period } = formatTimeOfDay(now);
     return {
@@ -39,7 +39,7 @@ export function computeFrame(state: ClockState, now: Date): Frame {
     return {
       kind: "text",
       content: formatCountdown(remainingMs),
-      bandClass: `band-${getBand(remainingMs)}`,
+      bandClass: `band-${getBand(remainingMs, bandConfig)}`,
     };
   }
 
@@ -57,10 +57,13 @@ export class DisplayView {
   private readonly container: HTMLElement;
   private lastKey = "";
   private lastBandClass = "";
+  private sizeScale = 1;
+  private onFit?: (fontPx: number) => void;
 
-  constructor(el: HTMLElement) {
+  constructor(el: HTMLElement, onFit?: (fontPx: number) => void) {
     this.el = el;
     this.container = el.parentElement!;
+    this.onFit = onFit;
     new ResizeObserver(() => this.fit()).observe(this.container);
   }
 
@@ -88,17 +91,73 @@ export class DisplayView {
     this.lastBandClass = "";
   }
 
+  setFont(fontFamily: string): void {
+    this.el.style.fontFamily = fontFamily;
+    this.fit();
+  }
+
+  /** Multiplier on the target fill ratio, from the user's clock-size setting. */
+  setSizeScale(scale: number): void {
+    this.sizeScale = scale;
+    this.fit();
+  }
+
+  setDangerPulse(enabled: boolean): void {
+    this.el.classList.toggle("pulse-enabled", enabled);
+  }
+
   /** Scales font-size so the rendered text fills a target proportion of the stage box. */
   private fit(): void {
     const currentFontPx = parseFloat(getComputedStyle(this.el).fontSize);
     const { width, height } = this.el.getBoundingClientRect();
     if (!currentFontPx || width === 0 || height === 0) return;
 
-    const availWidth = this.container.clientWidth * FILL_WIDTH_RATIO;
-    const availHeight = this.container.clientHeight * FILL_HEIGHT_RATIO;
+    const availWidth = this.container.clientWidth * FILL_WIDTH_RATIO * this.sizeScale;
+    const availHeight = this.container.clientHeight * FILL_HEIGHT_RATIO * this.sizeScale;
     const scale = Math.min(availWidth / width, availHeight / height);
 
-    this.el.style.fontSize = `${currentFontPx * scale}px`;
+    const nextFontPx = currentFontPx * scale;
+    this.el.style.fontSize = `${nextFontPx}px`;
+    this.onFit?.(nextFontPx);
+  }
+}
+
+/** Fully-resolved title styling, decoupled from the Settings shape (avoids a display<->settings import cycle). */
+export interface TitleViewProps {
+  text: string;
+  font: string;
+  sizeRatio: number;
+  colorCss: string;
+  position: string;
+}
+
+/** Owns the title label shown near the clock: text, styling, and position anchor. */
+export class TitleView {
+  private readonly el: HTMLElement;
+  private sizeRatio = 0.3;
+  private clockFontPx = 160;
+
+  constructor(el: HTMLElement) {
+    this.el = el;
+  }
+
+  setProps(title: TitleViewProps): void {
+    const isEmpty = title.text.trim() === "";
+    this.el.textContent = title.text;
+    this.el.style.fontFamily = title.font;
+    this.el.style.color = title.colorCss;
+    this.el.className = `title-anchor-${title.position}${isEmpty ? " hidden" : ""}`;
+    this.sizeRatio = title.sizeRatio;
+    this.applySize();
+  }
+
+  setClockFontPx(px: number): void {
+    this.clockFontPx = px;
+    this.applySize();
+  }
+
+  private applySize(): void {
+    this.el.style.fontSize = `${this.clockFontPx * this.sizeRatio}px`;
   }
 }
 

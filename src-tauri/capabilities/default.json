@@ -11,6 +11,7 @@
     "core:webview:allow-create-webview-window",
     "core:window:allow-destroy",
     "core:window:allow-set-fullscreen",
-    "core:window:allow-set-always-on-top"
+    "core:window:allow-set-always-on-top",
+    "store:default"
   ]
 }

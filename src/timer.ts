@@ -2,12 +2,18 @@ export type TimerMode = "countdown" | "stopwatch";
 export type Mode = "clock" | TimerMode;
 export type Band = "ok" | "warn" | "danger";
 
-// const WARN_THRESHOLD_MS = 60_000;
-const DANGER_THRESHOLD_MS = 10_000;
+export interface BandConfig {
+  warn: { enabled: boolean; thresholdMs: number };
+  danger: { enabled: boolean; thresholdMs: number };
+}
 
-export function getBand(remainingMs: number): Band {
-  if (remainingMs <= DANGER_THRESHOLD_MS) return "danger";
-  // if (remainingMs <= WARN_THRESHOLD_MS) return "warn";
+/**
+ * Disabled tiers are skipped entirely: the band holds at whatever tier is still enabled
+ * for that remaining time, rather than falling through to a hardcoded default.
+ */
+export function getBand(remainingMs: number, config: BandConfig): Band {
+  if (config.danger.enabled && remainingMs <= config.danger.thresholdMs) return "danger";
+  if (config.warn.enabled && remainingMs <= config.warn.thresholdMs) return "warn";
   return "ok";
 }
 

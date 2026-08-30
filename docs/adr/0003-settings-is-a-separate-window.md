@@ -1,0 +1,3 @@
+# Settings is a separate OS window, not an in-page modal
+
+Settings was first built as an in-page modal overlay centered on the control window. That blocked the live preview it was meant to enable — the operator couldn't see the stage changing behind the modal while adjusting a color or the title. Settings is now a third real Tauri window (alongside the control and popout windows), following the same pattern as the popout: its own HTML entry, its own event channel to push/pull Draft settings, created/destroyed via `WebviewWindow` like the popout is. Being a real OS window makes it freely movable (native title bar) and resizable, so it can sit beside the control window instead of on top of it.

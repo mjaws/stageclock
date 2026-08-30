@@ -50,19 +50,9 @@
           <button type="button" id="popout-fullscreen-btn" disabled>Fullscreen</button>
           <button type="button" id="popout-chrome-btn" disabled>Toggle toolbar</button>
           <button type="button" id="popout-ontop-btn" disabled>On top</button>
-          <label class="opacity-group" for="popout-opacity">
-            Background
-            <input
-              type="range"
-              id="popout-opacity"
-              min="0"
-              max="100"
-              value="100"
-              disabled
-              aria-label="Popout background opacity"
-            />
-          </label>
         </div>
+
+        <button type="button" id="settings-btn" title="Appearance settings">Settings</button>
 
         <button type="button" id="chrome-toggle-btn" title="Hide toolbar (F9)">
           Hide toolbar
@@ -71,6 +61,7 @@
 
       <div id="stage">
         <div id="display" class="band-neutral">00:00:00</div>
+        <div id="title" class="title-anchor-top-center hidden"></div>
       </div>
 
       <div id="hint">Press F9 to show the toolbar again</div>

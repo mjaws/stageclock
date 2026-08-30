@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "settings",
+  "description": "Appearance settings window — a separate, freely movable window for the operator",
+  "windows": ["settings"],
+  "permissions": ["core:event:default", "core:window:default"]
+}

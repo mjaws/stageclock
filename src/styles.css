@@ -143,7 +143,8 @@ body[data-mode="stopwatch"] #duration-input {
 }
 
 .timer-controls button,
-#chrome-toggle-btn {
+#chrome-toggle-btn,
+#settings-btn {
   background: transparent;
   color: var(--text-dim);
   border: 1px solid var(--border);
@@ -155,7 +156,8 @@ body[data-mode="stopwatch"] #duration-input {
 }
 
 .timer-controls button:hover,
-#chrome-toggle-btn:hover {
+#chrome-toggle-btn:hover,
+#settings-btn:hover {
   color: var(--text);
   border-color: var(--accent);
 }
@@ -198,14 +200,6 @@ body[data-mode="stopwatch"] #duration-input {
   border-color: var(--accent);
 }
 
-.opacity-group {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.85rem;
-  color: var(--text-dim);
-}
-
 #save-btn.dirty {
   color: var(--bg);
   background: var(--warn);
@@ -222,12 +216,54 @@ body[data-mode="stopwatch"] #duration-input {
 
 /* Stage / clock face */
 #stage {
+  position: relative;
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 0;
   cursor: default;
+}
+
+/* Title label, positioned near the clock */
+#title {
+  position: absolute;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.title-anchor-top-left {
+  top: 1rem;
+  left: 1rem;
+}
+
+.title-anchor-top-center {
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.title-anchor-top-right {
+  top: 1rem;
+  right: 1rem;
+}
+
+.title-anchor-bottom-left {
+  bottom: 1rem;
+  left: 1rem;
+}
+
+.title-anchor-bottom-center {
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.title-anchor-bottom-right {
+  bottom: 1rem;
+  right: 1rem;
 }
 
 body.chrome-hidden #stage {
@@ -274,7 +310,7 @@ body.chrome-hidden #stage {
 }
 
 .band-ok {
-  color: var(--neutral);
+  color: var(--ok);
 }
 
 .band-warn {
@@ -283,6 +319,9 @@ body.chrome-hidden #stage {
 
 .band-danger {
   color: var(--danger);
+}
+
+.band-danger.pulse-enabled {
   animation: pulse 1s ease-in-out infinite;
 }
 
@@ -321,4 +360,102 @@ body.chrome-hidden #stage {
 body.popout.fullscreen,
 body.popout.fullscreen #stage {
   cursor: none;
+}
+
+/* Settings window — a separate, freely movable OS window; the whole window is the form. */
+body.settings-window {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-controls);
+}
+
+.settings-body {
+  overflow-y: auto;
+  padding: 0.9rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.settings-section h3 {
+  margin: 0 0 0.6rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.settings-row label {
+  min-width: 11rem;
+  flex-shrink: 0;
+}
+
+.settings-row select,
+.settings-row input[type="text"],
+.settings-row input[type="number"] {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.85rem;
+  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+}
+
+.settings-row input[type="number"] {
+  width: 4.5rem;
+}
+
+.settings-row input[type="range"] {
+  width: 5rem;
+}
+
+.settings-row input[type="color"] {
+  width: 2.3rem;
+  height: 1.6rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.settings-row .settings-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 8.5rem;
+}
+
+.settings-unit {
+  color: var(--text-dim);
+}
+
+.settings-footer {
+  padding: 0.8rem 1.1rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+}
+
+#settings-reset-btn {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+#settings-reset-btn:hover {
+  color: var(--text);
+  border-color: var(--accent);
 }
