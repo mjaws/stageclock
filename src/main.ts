@@ -9,7 +9,14 @@ import {
   formatAudienceSummary,
   type ClockState,
 } from "./display";
-import { POPOUT_LABEL, EVT_STATE, EVT_READY, EVT_CLOSED, type StatePayload } from "./protocol";
+import {
+  POPOUT_LABEL,
+  EVT_STATE,
+  EVT_READY,
+  EVT_CLOSED,
+  EVT_OPACITY,
+  type StatePayload,
+} from "./protocol";
 
 const appWindow = getCurrentWindow();
 
@@ -30,6 +37,7 @@ let publishedJson = "";
 let popoutOpen = false;
 let popoutOpening = false;
 let lastReadoutText = "";
+let popoutBgOpacity = 100;
 
 /** An unconfirmed edit to the running countdown's duration, staged but not yet published. */
 let pendingCountdownMs: number | null = null;
@@ -50,6 +58,7 @@ const popoutBtn = document.querySelector<HTMLButtonElement>("#popout-btn")!;
 const popoutFullscreenBtn = document.querySelector<HTMLButtonElement>("#popout-fullscreen-btn")!;
 const popoutChromeBtn = document.querySelector<HTMLButtonElement>("#popout-chrome-btn")!;
 const popoutOntopBtn = document.querySelector<HTMLButtonElement>("#popout-ontop-btn")!;
+const popoutOpacitySlider = document.querySelector<HTMLInputElement>("#popout-opacity")!;
 const nudgeControlsEl = document.querySelector<HTMLDivElement>("#nudge-controls")!;
 const nudgeAmountSelect = document.querySelector<HTMLSelectElement>("#nudge-amount")!;
 const nudgeMinusBtn = document.querySelector<HTMLButtonElement>("#nudge-minus-btn")!;
@@ -224,6 +233,7 @@ function updatePopoutUi(): void {
   popoutFullscreenBtn.disabled = !popoutOpen;
   popoutChromeBtn.disabled = !popoutOpen;
   popoutOntopBtn.disabled = !popoutOpen;
+  popoutOpacitySlider.disabled = !popoutOpen;
   if (popoutOpen) {
     popoutOntopBtn.classList.add("active");
   } else {
@@ -257,7 +267,7 @@ async function openPopout(): Promise<void> {
     center: true,
     focus: true,
     alwaysOnTop: true,
-    backgroundColor: "#0c0b0b",
+    transparent: true,
   });
 
   void w.once("tauri://error", () => {
@@ -367,6 +377,11 @@ popoutOntopBtn.addEventListener("click", async () => {
   popoutOntopBtn.classList.toggle("active", !isTop);
 });
 
+popoutOpacitySlider.addEventListener("input", () => {
+  popoutBgOpacity = Number(popoutOpacitySlider.value);
+  void emit(EVT_OPACITY, popoutBgOpacity);
+});
+
 chromeToggleBtn.addEventListener("click", toggleChrome);
 
 stageEl.addEventListener("mousedown", (e) => {
@@ -389,6 +404,7 @@ void listen(EVT_READY, () => {
   popoutOpen = true;
   popoutOpening = false;
   save();
+  void emit(EVT_OPACITY, popoutBgOpacity);
   updatePopoutUi();
 });
 

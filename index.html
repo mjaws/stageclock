@@ -50,6 +50,18 @@
           <button type="button" id="popout-fullscreen-btn" disabled>Fullscreen</button>
           <button type="button" id="popout-chrome-btn" disabled>Toggle toolbar</button>
           <button type="button" id="popout-ontop-btn" disabled>On top</button>
+          <label class="opacity-group" for="popout-opacity">
+            Background
+            <input
+              type="range"
+              id="popout-opacity"
+              min="0"
+              max="100"
+              value="100"
+              disabled
+              aria-label="Popout background opacity"
+            />
+          </label>
         </div>
 
         <button type="button" id="chrome-toggle-btn" title="Hide toolbar (F9)">

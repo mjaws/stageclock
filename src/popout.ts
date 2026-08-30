@@ -2,7 +2,7 @@ import { getCurrentWebviewWindow } from "@tauri-apps/api/webviewWindow";
 import { emit } from "@tauri-apps/api/event";
 import { Timer } from "./timer";
 import { computeFrame, DisplayView, applyModeToBody, type ClockState } from "./display";
-import { EVT_STATE, EVT_READY, EVT_CLOSED, type StatePayload } from "./protocol";
+import { EVT_STATE, EVT_READY, EVT_CLOSED, EVT_OPACITY, type StatePayload } from "./protocol";
 
 const self = getCurrentWebviewWindow();
 
@@ -87,6 +87,10 @@ async function main(): Promise<void> {
       started = true;
       requestAnimationFrame(loop);
     }
+  });
+
+  await self.listen<number>(EVT_OPACITY, ({ payload }) => {
+    document.body.style.setProperty("--bg-alpha", String(payload / 100));
   });
 
   await self.onCloseRequested(async () => {

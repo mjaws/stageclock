@@ -8,6 +8,8 @@
 
 :root {
   --bg: #161414;
+  --bg-rgb: 22, 20, 20;
+  --bg-alpha: 1;
   --bg-controls: #16171a;
   --border: #2a2b2f;
   --text: #e8e8ea;
@@ -28,11 +30,14 @@ body {
   margin: 0;
   height: 100%;
   overflow: hidden;
-  background: var(--bg);
   color: var(--text);
   font-family: "Montserrat", Inter, "Segoe UI", Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   user-select: none;
+}
+
+body {
+  background: rgba(var(--bg-rgb), var(--bg-alpha));
 }
 
 #app {
@@ -191,6 +196,14 @@ body[data-mode="stopwatch"] #duration-input {
   color: var(--bg);
   background: var(--accent);
   border-color: var(--accent);
+}
+
+.opacity-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--text-dim);
 }
 
 #save-btn.dirty {

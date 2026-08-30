@@ -8,6 +8,8 @@ export const EVT_STATE = "stageclock://state";
 export const EVT_READY = "stageclock://popout-ready";
 /** popout -> main. "I am about to be destroyed." */
 export const EVT_CLOSED = "stageclock://popout-closed";
+/** main -> popout. Background opacity, 0-100. */
+export const EVT_OPACITY = "stageclock://popout-opacity";
 
 export interface StatePayload {
   mode: Mode;
