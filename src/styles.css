@@ -37,7 +37,23 @@ body {
 }
 
 body {
-  background: rgba(var(--bg-rgb), var(--bg-alpha));
+  background-color: rgba(var(--bg-rgb), var(--bg-alpha));
+}
+
+/**
+ * The control window is never OS-level transparent (unlike the popout), so a low alpha
+ * here has nothing real to reveal — it would just fade toward WebView2's opaque default
+ * instead of previewing "this will be see-through". A checkerboard, washed over with the
+ * same translucent color the popout actually renders, gives an accurate preview instead.
+ */
+body.control-window {
+  background-color: #201f1f;
+  background-image:
+    linear-gradient(rgba(var(--bg-rgb), var(--bg-alpha)), rgba(var(--bg-rgb), var(--bg-alpha))),
+    linear-gradient(45deg, #3a3939 25%, transparent 25%, transparent 75%, #3a3939 75%),
+    linear-gradient(45deg, #3a3939 25%, transparent 25%, transparent 75%, #3a3939 75%);
+  background-position: 0 0, 0 0, 10px 10px;
+  background-size: 100% 100%, 20px 20px, 20px 20px;
 }
 
 #app {

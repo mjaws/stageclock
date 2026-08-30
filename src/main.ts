@@ -289,6 +289,7 @@ async function openPopout(): Promise<void> {
     focus: true,
     alwaysOnTop: true,
     transparent: true,
+    shadow: false,
   });
 
   void w.once("tauri://error", () => {
