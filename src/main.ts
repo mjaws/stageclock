@@ -5,18 +5,32 @@ import { Timer, parseDuration, formatDuration, formatCountdown, getBand, type Mo
 import {
   computeFrame,
   DisplayView,
+  TitleView,
   applyModeToBody,
   formatAudienceSummary,
   type ClockState,
 } from "./display";
 import {
   POPOUT_LABEL,
+  SETTINGS_LABEL,
   EVT_STATE,
   EVT_READY,
   EVT_CLOSED,
-  EVT_OPACITY,
+  EVT_SETTINGS_READY,
+  EVT_SETTINGS_STATE,
+  EVT_SETTINGS_CHANGE,
+  EVT_SETTINGS_CLOSED,
   type StatePayload,
 } from "./protocol";
+import {
+  applySettings,
+  bandConfigFrom,
+  countdownFormatFrom,
+  defaultSettings,
+  loadPersistedSettings,
+  savePersistedSettings,
+  type Settings,
+} from "./settings";
 
 const appWindow = getCurrentWindow();
 
@@ -31,13 +45,17 @@ const live: ClockState = {
   stopwatch: new Timer("stopwatch", 0),
 };
 
+let draftSettings: Settings = defaultSettings();
+let liveSettings: Settings = defaultSettings();
+
 let chromeHidden = false;
 let hintTimeout: number | undefined;
 let publishedJson = "";
 let popoutOpen = false;
 let popoutOpening = false;
+let settingsOpen = false;
+let settingsOpening = false;
 let lastReadoutText = "";
-let popoutBgOpacity = 100;
 
 /** An unconfirmed edit to the running countdown's duration, staged but not yet published. */
 let pendingCountdownMs: number | null = null;
@@ -58,15 +76,17 @@ const popoutBtn = document.querySelector<HTMLButtonElement>("#popout-btn")!;
 const popoutFullscreenBtn = document.querySelector<HTMLButtonElement>("#popout-fullscreen-btn")!;
 const popoutChromeBtn = document.querySelector<HTMLButtonElement>("#popout-chrome-btn")!;
 const popoutOntopBtn = document.querySelector<HTMLButtonElement>("#popout-ontop-btn")!;
-const popoutOpacitySlider = document.querySelector<HTMLInputElement>("#popout-opacity")!;
 const nudgeControlsEl = document.querySelector<HTMLDivElement>("#nudge-controls")!;
 const nudgeAmountSelect = document.querySelector<HTMLSelectElement>("#nudge-amount")!;
 const nudgeMinusBtn = document.querySelector<HTMLButtonElement>("#nudge-minus-btn")!;
 const nudgePlusBtn = document.querySelector<HTMLButtonElement>("#nudge-plus-btn")!;
 const confirmEditBtn = document.querySelector<HTMLButtonElement>("#confirm-edit-btn")!;
 const cancelEditBtn = document.querySelector<HTMLButtonElement>("#cancel-edit-btn")!;
+const settingsBtn = document.querySelector<HTMLButtonElement>("#settings-btn")!;
+const titleEl = document.querySelector<HTMLDivElement>("#title")!;
 
-const view = new DisplayView(displayEl);
+const titleView = new TitleView(titleEl);
+const view = new DisplayView(displayEl, (px) => titleView.setClockFontPx(px));
 
 function activeTimerOf(state: ClockState): Timer | null {
   if (state.mode === "countdown") return state.countdown;
@@ -74,11 +94,12 @@ function activeTimerOf(state: ClockState): Timer | null {
   return null;
 }
 
-function serialize(state: ClockState): StatePayload {
+function serialize(state: ClockState, settings: Settings): StatePayload {
   return {
     mode: state.mode,
     countdown: state.countdown.snapshot(),
     stopwatch: state.stopwatch.snapshot(),
+    settings,
   };
 }
 
@@ -88,13 +109,13 @@ function refreshDirty(): void {
     saveBtn.classList.remove("dirty");
     return;
   }
-  const dirty = JSON.stringify(serialize(draft)) !== publishedJson;
+  const dirty = JSON.stringify(serialize(draft, draftSettings)) !== publishedJson;
   saveBtn.disabled = !dirty;
   saveBtn.classList.toggle("dirty", dirty);
 }
 
 function publish(): void {
-  const payload = serialize(live);
+  const payload = serialize(live, liveSettings);
   publishedJson = JSON.stringify(payload);
   void emit(EVT_STATE, payload);
 }
@@ -103,6 +124,8 @@ function save(): void {
   live.mode = draft.mode;
   live.countdown.restore(draft.countdown.snapshot());
   live.stopwatch.restore(draft.stopwatch.snapshot());
+  liveSettings = structuredClone(draftSettings);
+  void savePersistedSettings(liveSettings);
   publish();
   refreshDirty();
 }
@@ -221,7 +244,7 @@ function applyDurationInput(commit: boolean): void {
 
 function updateAudienceReadout(now: Date): void {
   if (!popoutOpen) return;
-  const text = `Audience: ${formatAudienceSummary(live, now)}`;
+  const text = `Audience: ${formatAudienceSummary(live, now, countdownFormatFrom(liveSettings))}`;
   if (text !== lastReadoutText) {
     audienceReadoutEl.textContent = text;
     lastReadoutText = text;
@@ -233,7 +256,6 @@ function updatePopoutUi(): void {
   popoutFullscreenBtn.disabled = !popoutOpen;
   popoutChromeBtn.disabled = !popoutOpen;
   popoutOntopBtn.disabled = !popoutOpen;
-  popoutOpacitySlider.disabled = !popoutOpen;
   if (popoutOpen) {
     popoutOntopBtn.classList.add("active");
   } else {
@@ -268,6 +290,7 @@ async function openPopout(): Promise<void> {
     focus: true,
     alwaysOnTop: true,
     transparent: true,
+    shadow: false,
   });
 
   void w.once("tauri://error", () => {
@@ -282,16 +305,60 @@ async function closePopout(): Promise<void> {
   updatePopoutUi();
 }
 
+function updateSettingsUi(): void {
+  settingsBtn.textContent = settingsOpen ? "Close settings" : "Settings";
+}
+
+/** The Settings window is a separate, freely movable OS window (unlike the old in-page modal). */
+async function openSettingsWindow(): Promise<void> {
+  if (settingsOpen || settingsOpening) return;
+
+  const existing = await WebviewWindow.getByLabel(SETTINGS_LABEL);
+  if (existing) {
+    settingsOpen = true;
+    updateSettingsUi();
+    await existing.setFocus();
+    return;
+  }
+
+  settingsOpening = true;
+  const w = new WebviewWindow(SETTINGS_LABEL, {
+    url: "/settings.html",
+    title: "StageClock — Appearance",
+    width: 480,
+    height: 640,
+    minWidth: 400,
+    minHeight: 400,
+    decorations: true,
+    resizable: true,
+    center: false,
+    focus: true,
+  });
+
+  void w.once("tauri://error", () => {
+    settingsOpening = false;
+  });
+}
+
+async function closeSettingsWindow(): Promise<void> {
+  const w = await WebviewWindow.getByLabel(SETTINGS_LABEL);
+  await w?.destroy();
+  settingsOpen = false;
+  updateSettingsUi();
+}
+
 function loop(): void {
   const now = new Date();
+  const bandConfig = bandConfigFrom(draftSettings);
+  const countdownFormat = countdownFormatFrom(draftSettings);
   if (pendingCountdownMs !== null) {
     view.apply({
       kind: "text",
-      content: formatCountdown(pendingCountdownMs),
-      bandClass: `band-${getBand(pendingCountdownMs)}`,
+      content: formatCountdown(pendingCountdownMs, countdownFormat),
+      bandClass: `band-${getBand(pendingCountdownMs, bandConfig)}`,
     });
   } else {
-    view.apply(computeFrame(draft, now));
+    view.apply(computeFrame(draft, now, bandConfig, countdownFormat));
   }
   updateAudienceReadout(now);
   requestAnimationFrame(loop);
@@ -377,9 +444,12 @@ popoutOntopBtn.addEventListener("click", async () => {
   popoutOntopBtn.classList.toggle("active", !isTop);
 });
 
-popoutOpacitySlider.addEventListener("input", () => {
-  popoutBgOpacity = Number(popoutOpacitySlider.value);
-  void emit(EVT_OPACITY, popoutBgOpacity);
+settingsBtn.addEventListener("click", () => {
+  if (settingsOpen) {
+    void closeSettingsWindow();
+  } else {
+    void openSettingsWindow();
+  }
 });
 
 chromeToggleBtn.addEventListener("click", toggleChrome);
@@ -404,7 +474,6 @@ void listen(EVT_READY, () => {
   popoutOpen = true;
   popoutOpening = false;
   save();
-  void emit(EVT_OPACITY, popoutBgOpacity);
   updatePopoutUi();
 });
 
@@ -413,12 +482,43 @@ void listen(EVT_CLOSED, () => {
   updatePopoutUi();
 });
 
+void listen(EVT_SETTINGS_READY, () => {
+  settingsOpen = true;
+  settingsOpening = false;
+  void emit(EVT_SETTINGS_STATE, draftSettings);
+  updateSettingsUi();
+});
+
+void listen<Settings>(EVT_SETTINGS_CHANGE, ({ payload }) => {
+  draftSettings = payload;
+  applySettings(draftSettings, view, titleView);
+  refreshDirty();
+});
+
+void listen(EVT_SETTINGS_CLOSED, () => {
+  settingsOpen = false;
+  updateSettingsUi();
+});
+
 void appWindow.onCloseRequested(async () => {
   try {
     const w = await WebviewWindow.getByLabel(POPOUT_LABEL);
     await w?.destroy();
   } catch {}
+  try {
+    const sw = await WebviewWindow.getByLabel(SETTINGS_LABEL);
+    await sw?.destroy();
+  } catch {}
 });
 
-setDraftMode("clock");
-requestAnimationFrame(loop);
+async function init(): Promise<void> {
+  const loaded = await loadPersistedSettings();
+  draftSettings = loaded;
+  liveSettings = structuredClone(loaded);
+  applySettings(draftSettings, view, titleView);
+
+  setDraftMode("clock");
+  requestAnimationFrame(loop);
+}
+
+void init();

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/src/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StageClock — Appearance</title>
+    <script type="module" src="/src/settings-window.ts" defer></script>
+  </head>
+
+  <body class="settings-window">
+    <div class="settings-body">
+      <section class="settings-section">
+        <h3>Clock</h3>
+        <div class="settings-row">
+          <label for="clock-font-select">Font</label>
+          <select id="clock-font-select"></select>
+          <input type="text" id="clock-font-custom" class="hidden" placeholder="Font family name" />
+        </div>
+        <div class="settings-row">
+          <label for="clock-size-range">Size</label>
+          <input type="range" id="clock-size-range" min="0.5" max="1.5" step="0.05" value="1" />
+        </div>
+        <div class="settings-row">
+          <label for="clock-minutes-below-60">Final minute as M:SS</label>
+          <label class="settings-toggle">
+            <input type="checkbox" id="clock-minutes-below-60" role="switch" />
+            <span class="settings-toggle-track" aria-hidden="true"></span>
+          </label>
+        </div>
+      </section>
+
+      <section class="settings-section">
+        <h3>Colors</h3>
+        <div class="settings-row">
+          <label for="neutral-color">Normal (clock/stopwatch)</label>
+          <input type="color" id="neutral-color" />
+          <input type="range" id="neutral-alpha" min="0" max="100" value="100" aria-label="Normal color opacity" />
+        </div>
+        <div class="settings-row">
+          <label for="ok-color">Countdown: OK</label>
+          <input type="color" id="ok-color" />
+          <input type="range" id="ok-alpha" min="0" max="100" value="100" aria-label="OK color opacity" />
+        </div>
+        <div class="settings-row">
+          <label class="settings-checkbox-label">
+            <input type="checkbox" id="warn-enabled" /> Warn
+          </label>
+          <input type="color" id="warn-color" />
+          <input type="range" id="warn-alpha" min="0" max="100" value="100" aria-label="Warn color opacity" />
+          <input type="number" id="warn-threshold" min="0" step="1" aria-label="Warn threshold, seconds remaining" />
+          <span class="settings-unit">s remaining</span>
+        </div>
+        <div class="settings-row">
+          <label class="settings-checkbox-label">
+            <input type="checkbox" id="danger-enabled" /> Danger
+          </label>
+          <input type="color" id="danger-color" />
+          <input type="range" id="danger-alpha" min="0" max="100" value="100" aria-label="Danger color opacity" />
+          <input type="number" id="danger-threshold" min="0" step="1" aria-label="Danger threshold, seconds remaining" />
+          <span class="settings-unit">s remaining</span>
+          <label class="settings-checkbox-label">
+            <input type="checkbox" id="danger-pulse" /> Pulse
+          </label>
+        </div>
+      </section>
+
+      <section class="settings-section">
+        <h3>Background</h3>
+        <div class="settings-row">
+          <label for="bg-color">Color</label>
+          <input type="color" id="bg-color" />
+          <input type="range" id="bg-alpha" min="0" max="100" value="100" aria-label="Background opacity" />
+        </div>
+      </section>
+
+      <section class="settings-section">
+        <h3>Title</h3>
+        <div class="settings-row">
+          <label for="title-text">Text</label>
+          <input type="text" id="title-text" placeholder="Title" />
+        </div>
+        <div class="settings-row">
+          <label for="title-font-select">Font</label>
+          <select id="title-font-select"></select>
+          <input type="text" id="title-font-custom" class="hidden" placeholder="Font family name" />
+        </div>
+        <div class="settings-row">
+          <label for="title-size-range">Size</label>
+          <input type="range" id="title-size-range" min="0.1" max="1" step="0.05" value="0.3" />
+        </div>
+        <div class="settings-row">
+          <label for="title-color">Color</label>
+          <input type="color" id="title-color" />
+          <input type="range" id="title-alpha" min="0" max="100" value="100" aria-label="Title color opacity" />
+        </div>
+        <div class="settings-row">
+          <label for="title-position-select">Position</label>
+          <select id="title-position-select"></select>
+        </div>
+      </section>
+    </div>
+
+    <div class="settings-footer">
+      <button type="button" id="settings-reset-btn">Reset to defaults</button>
+    </div>
+  </body>
+</html>

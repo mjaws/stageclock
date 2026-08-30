@@ -2,12 +2,18 @@ export type TimerMode = "countdown" | "stopwatch";
 export type Mode = "clock" | TimerMode;
 export type Band = "ok" | "warn" | "danger";
 
-// const WARN_THRESHOLD_MS = 60_000;
-const DANGER_THRESHOLD_MS = 10_000;
+export interface BandConfig {
+  warn: { enabled: boolean; thresholdMs: number };
+  danger: { enabled: boolean; thresholdMs: number };
+}
 
-export function getBand(remainingMs: number): Band {
-  if (remainingMs <= DANGER_THRESHOLD_MS) return "danger";
-  // if (remainingMs <= WARN_THRESHOLD_MS) return "warn";
+/**
+ * Disabled tiers are skipped entirely: the band holds at whatever tier is still enabled
+ * for that remaining time, rather than falling through to a hardcoded default.
+ */
+export function getBand(remainingMs: number, config: BandConfig): Band {
+  if (config.danger.enabled && remainingMs <= config.danger.thresholdMs) return "danger";
+  if (config.warn.enabled && remainingMs <= config.warn.thresholdMs) return "warn";
   return "ok";
 }
 
@@ -158,14 +164,19 @@ export function formatDuration(totalSeconds: number): string {
   return `${minutes}:${ss}`;
 }
 
-/** Formats remaining milliseconds for a countdown: "H:MM:SS" / "M:SS", switching to "S.T" below one minute. */
-export function formatCountdown(remainingMs: number): string {
+export interface FormatCountdownOptions {
+  /** When true, keep "M:SS" below one minute instead of switching to "SS.T". */
+  minutesBelow60?: boolean;
+}
+
+/** Formats remaining milliseconds for a countdown: "H:MM:SS" / "M:SS", switching to "SS.T" below one minute. */
+export function formatCountdown(remainingMs: number, options: FormatCountdownOptions = {}): string {
   const clamped = Math.max(0, remainingMs);
-  if (clamped < 60_000) {
+  if (clamped < 60_000 && !options.minutesBelow60) {
     const deciseconds = Math.min(599, Math.ceil(clamped / 100));
     const seconds = Math.floor(deciseconds / 10);
     const tenths = deciseconds % 10;
-    return `${seconds}.${tenths}`;
+    return `${String(seconds).padStart(2, "0")}.${tenths}`;
   }
   return formatDuration(Math.ceil(clamped / 1000));
 }

@@ -38,13 +38,15 @@ async function listTargets() {
   return res.json();
 }
 
-/** which: "main" (default) or "popout" */
+/** which: "main" (default), "popout", or "settings" */
 async function findTarget(which = "main") {
   const targets = (await listTargets()).filter((t) => t.type === "page");
   const target =
     which === "popout"
       ? targets.find((t) => t.url.includes("popout.html"))
-      : targets.find((t) => !t.url.includes("popout.html"));
+      : which === "settings"
+        ? targets.find((t) => t.url.includes("settings.html"))
+        : targets.find((t) => !t.url.includes("popout.html") && !t.url.includes("settings.html"));
   if (!target) {
     throw new Error(
       `no "${which}" target. Open targets: ${targets.map((t) => `${t.title} <${t.url}>`).join(", ") || "(none)"}`
@@ -202,6 +204,6 @@ switch (cmd) {
     break;
   default:
     console.log("usage: node driver.mjs <launch|targets|eval|click|screenshot|quit> [...args]");
-    console.log('  eval/click/screenshot take a target as first arg: "main" or "popout"');
+    console.log('  eval/click/screenshot take a target as first arg: "main", "popout", or "settings"');
     process.exit(1);
 }
